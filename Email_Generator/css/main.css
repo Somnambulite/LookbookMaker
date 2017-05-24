@@ -1,0 +1,1372 @@
+    body { 
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 0 200px;
+        background-color: #fafafa;
+        font-family: 'Montserrat', Arial, sans-serif;        
+    }
+    a { text-decoration: none; }
+    .maker header {
+        padding: 12px;
+        text-transform: uppercase;
+        background-color: #0D47A1;
+        color: white;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+    .maker header a { color: white; }
+    .maker header nav li { position: relative; }
+    .maker header i { 
+        position: relative;
+        top: 5px;
+        font-size: 30px; 
+    }
+    .maker .wrapper {
+        max-width: 1200px;
+        margin: 0 auto 200px auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .maker i { 
+        margin-left: 0;
+        margin-right: 10px;
+    }
+    .maker h1,
+    .maker .h1,
+    .maker h2,
+    .maker .h2,
+    .maker h3,
+    .maker .h3,
+    .maker h4,
+    .maker .h4,
+    .maker h5,
+    .maker .h5,
+    .maker h6,
+    .maker .h6 {
+        font-family: inherit;
+        color: #0D47A1;
+    }
+    .maker h1 { font-size: 52px; }
+        }
+    
+    .maker .h1 { font-size: 56px; }
+        @media (min-width: 601px) {
+            .maker .h1 { font-size: 52px; }
+        }
+
+    .maker h2 {
+        font-size: 45px;
+        margin-top: 22.5px;
+        margin-bottom: 18px;
+    }
+        @media (min-width: 601px) {
+            .maker h2 { font-size: 41px; }
+        }
+
+    .maker .h2 { font-size: 45px; }
+        @media (min-width: 601px) {
+            .maker .h2 { font-size: 41px; }
+        }
+
+    .maker h3 {
+        font-size: 40px;
+        margin-top: 20px;
+        margin-bottom: 16px;
+    }
+        @media (min-width: 601px) {
+            h3 { font-size: 37px; }
+        }
+
+    .maker .h3 { font-size: 40px; }
+        @media (min-width: 601px) {
+            .maker .h3 { font-size: 37px; }
+        }
+
+    .maker h4 {
+        font-size: 34px;
+        margin-top: 17px;
+        margin-bottom: 13.6px;
+    }
+        @media (min-width: 601px) {
+            .maker h4 { font-size: 31px; }
+        }
+
+    .maker .h4 { font-size: 34px; }
+    @media (min-width: 601px) {
+        .maker .h4 { font-size: 31px; }
+    }
+
+    .maker h5 {
+        font-size: 24px;
+        margin-top: 12px;
+        margin-bottom: 9.6px;
+    }
+        @media (min-width: 601px) {
+            .maker h5 { font-size: 22px; }
+        }
+
+    .maker .h5 { font-size: 24px; }
+    @media (min-width: 601px) {
+        .maker .h5 {
+            font-size: 22px;
+        }
+    }
+
+    .maker h6 {
+        font-size: 16px;
+        margin-top: 8px;
+        margin-bottom: 6.4px;
+    }
+    @media (min-width: 601px) {
+        .maker h6 { font-size: 14px; }
+    }
+
+    .maker .h6 { font-size: 16px; }
+        @media (min-width: 601px) {
+            .maker .h6 { font-size: 14px; }
+        }
+
+    .maker .card-panel-0, 
+    .maker .card-panel-1, 
+    .maker .card-panel-2, 
+    .maker .card-panel-3, 
+    .maker .card-panel-4, 
+    .maker .card-panel-5 {
+        transition: box-shadow .25s;
+        margin: 8px;
+        border-radius: 2px;
+        background-color: #fff;
+    }
+
+    .maker .card-panel-0,
+    .maker .card-panel-0:hover { box-shadow: none; }
+
+    .maker .card-panel-1 {
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+    }
+    .maker .card-panel-1:hover {
+        box-shadow: 0 1.875px 4px rgba(0, 0, 0, 0.24), 0 1.875px 6px rgba(0, 0, 0, 0.12);
+    }
+
+    .maker .card-panel-2 {
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16);
+    }
+    .maker .card-panel-2:hover {
+        box-shadow: 0 3.75px 12px rgba(0, 0, 0, 0.23), 0 3.75px 12px rgba(0, 0, 0, 0.16);
+    }
+
+    .maker .card-panel-3 {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19);
+    }
+    .maker .card-panel-3:hover {
+        box-shadow: 0 7.5px 12px rgba(0, 0, 0, 0.23), 0 12.5px 40px rgba(0, 0, 0, 0.19);
+    }
+
+    .maker .card-panel-4 {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.22), 0 14px 56px rgba(0, 0, 0, 0.25);
+    }
+    .maker .card-panel-4:hover {
+        box-shadow: 0 12.5px 20px rgba(0, 0, 0, 0.22), 0 17.5px 56px rgba(0, 0, 0, 0.25);
+    }
+
+    .maker .card-panel-5 {
+        box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    }
+    .maker .card-panel-5:hover {
+        box-shadow: 0 18.75px 24px rgba(0, 0, 0, 0.22), 0 23.75px 76px rgba(0, 0, 0, 0.3);
+    }
+
+    .maker .col-no-pad { 
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    @media (min-width: 0px) {
+        .maker .col-xs-1 {
+            width: 8.33333%;
+        }
+
+        .maker .col-xs-2 {
+            width: 16.66667%;
+        }
+
+        .maker .col-xs-3 {
+            width: 25%;
+        }
+
+        .maker .col-xs-4 {
+            width: 33.33333%;
+        }
+
+        .maker .col-xs-5 {
+            width: 41.66667%;
+        }
+
+        .maker .col-xs-6 {
+            width: 50%;
+        }
+
+        .maker .col-xs-7 {
+            width: 58.33333%;
+        }
+
+        .maker .col-xs-8 {
+            width: 66.66667%;
+        }
+
+        .maker .col-xs-9 {
+            width: 75%;
+        }
+
+        .maker .col-xs-10 {
+            width: 83.33333%;
+        }
+
+        .maker .col-xs-11 {
+            width: 91.66667%;
+        }
+
+        .maker .col-xs-12 {
+            width: 100%;
+        }
+    }
+    @media (min-width: 601px) {
+        .maker .col-sm-1 {
+            width: 8.33333%;
+        }
+
+        .maker .col-sm-2 {
+            width: 16.66667%;
+        }
+
+        .maker .col-sm-3 {
+            width: 25%;
+        }
+
+        .maker .col-sm-4 {
+            width: 33.33333%;
+        }
+
+        .maker .col-sm-5 {
+            width: 41.66667%;
+        }
+
+        .maker .col-sm-6 {
+            width: 50%;
+        }
+
+        .maker .col-sm-7 {
+            width: 58.33333%;
+        }
+
+        .maker .col-sm-8 {
+            width: 66.66667%;
+        }
+
+        .maker .col-sm-9 {
+            width: 75%;
+        }
+
+        .maker .col-sm-10 {
+            width: 83.33333%;
+        }
+
+        .maker .col-sm-11 {
+            width: 91.66667%;
+        }
+
+        .maker .col-sm-12 {
+            width: 100%;
+        }
+    }
+    @media (min-width: 961px) {
+        .maker .col-md-1 {
+            width: 8.33333%;
+        }
+
+        .maker .col-md-2 {
+            width: 16.66667%;
+        }
+
+        .maker .col-md-3 {
+            width: 25%;
+        }
+
+        .maker .col-md-4 {
+            width: 33.33333%;
+        }
+
+        .maker .col-md-5 {
+            width: 41.66667%;
+        }
+
+        .maker .col-md-6 {
+            width: 50%;
+        }
+
+        .maker .col-md-7 {
+            width: 58.33333%;
+        }
+
+        .maker .col-md-8 {
+            width: 66.66667%;
+        }
+
+        .maker .col-md-9 {
+            width: 75%;
+        }
+
+        .maker .col-md-10 {
+            width: 83.33333%;
+        }
+
+        .maker .col-md-11 {
+            width: 91.66667%;
+        }
+
+        .maker .col-md-12 {
+            width: 100%;
+        }
+    }
+    @media (min-width: 1281px) {
+        .maker .col-lg-1 {
+            width: 8.33333%;
+        }
+
+        .maker .col-lg-2 {
+            width: 16.66667%;
+        }
+
+        .maker .col-lg-3 {
+            width: 25%;
+        }
+
+        .maker .col-lg-4 {
+            width: 33.33333%;
+        }
+
+        .maker .col-lg-5 {
+            width: 41.66667%;
+        }
+
+        .maker .col-lg-6 {
+            width: 50%;
+        }
+
+        .maker .col-lg-7 {
+            width: 58.33333%;
+        }
+
+        .maker .col-lg-8 {
+            width: 66.66667%;
+        }
+
+        .maker .col-lg-9 {
+            width: 75%;
+        }
+
+        .maker .col-lg-10 {
+            width: 83.33333%;
+        }
+
+        .maker .col-lg-11 {
+            width: 91.66667%;
+        }
+
+        .maker .col-lg-12 {
+            width: 100%;
+        }
+    }
+    @media (min-width: 1921px) {
+        .maker .col-xl-1 {
+            width: 8.33333%;
+        }
+
+        .maker .col-xl-2 {
+            width: 16.66667%;
+        }
+
+        .maker .col-xl-3 {
+            width: 25%;
+        }
+
+        .maker .col-xl-4 {
+            width: 33.33333%;
+        }
+
+        .maker .col-xl-5 {
+            width: 41.66667%;
+        }
+
+        .maker .col-xl-6 {
+            width: 50%;
+        }
+
+        .maker .col-xl-7 {
+            width: 58.33333%;
+        }
+
+        .maker .col-xl-8 {
+            width: 66.66667%;
+        }
+
+        .maker .col-xl-9 {
+            width: 75%;
+        }
+
+        .maker .col-xl-10 {
+            width: 83.33333%;
+        }
+
+        .maker .col-xl-11 {
+            width: 91.66667%;
+        }
+
+        .maker .col-xl-12 {
+            width: 100%;
+        }
+    }
+    .maker .col-xs-1, 
+    .maker .col-xs-2, 
+    .maker .col-xs-3, 
+    .maker .col-xs-4, 
+    .maker .col-xs-5, 
+    .maker .col-xs-6, 
+    .maker .col-xs-7, 
+    .maker .col-xs-8, 
+    .maker .col-xs-9, 
+    .maker .col-xs-10, 
+    .maker .col-xs-11, 
+    .maker .col-xs-12, 
+    .maker .col-sm-1, 
+    .maker .col-sm-2, 
+    .maker .col-sm-3, 
+    .maker .col-sm-4, 
+    .maker .col-sm-5, 
+    .maker .col-sm-6, 
+    .maker .col-sm-7, 
+    .maker .col-sm-8, 
+    .maker .col-sm-9, 
+    .maker .col-sm-10, 
+    .maker .col-sm-11, 
+    .maker .col-sm-12, 
+    .maker .col-md-1, 
+    .maker .col-md-2, 
+    .maker .col-md-3, 
+    .maker .col-md-4, 
+    .maker .col-md-5, 
+    .maker .col-md-6, 
+    .maker .col-md-7, 
+    .maker .col-md-8, 
+    .maker .col-md-9, 
+    .maker .col-md-10, 
+    .maker .col-md-11, 
+    .maker .col-md-12, 
+    .maker .col-lg-1, 
+    .maker .col-lg-2, 
+    .maker .col-lg-3, 
+    .maker .col-lg-4, 
+    .maker .col-lg-5, 
+    .maker .col-lg-6, 
+    .maker .col-lg-7, 
+    .maker .col-lg-8, 
+    .maker .col-lg-9, 
+    .maker .col-lg-10, 
+    .maker .col-lg-11, 
+    .maker .col-lg-12, 
+    .maker .col-xl-1, 
+    .maker .col-xl-2, 
+    .maker .col-xl-3, 
+    .maker .col-xl-4, 
+    .maker .col-xl-5, 
+    .maker .col-xl-6, 
+    .maker .col-xl-7, 
+    .maker .col-xl-8, 
+    .maker .col-xl-9, 
+    .maker .col-xl-10, 
+    .maker .col-xl-11, 
+    .maker .col-xl-12 {
+        display: inline-block;
+        float: left;
+    }
+
+
+
+    .maker body, 
+    .maker html, 
+    .maker .wrapper, 
+    .maker .title, 
+    .maker .subHeading, 
+    .maker label {
+        color: #212121;
+    }
+
+    .maker .jumbo-4, 
+    .maker .jumbo-3, 
+    .maker .jumbo-2, 
+    .maker .jumbo-1, 
+    .maker .caption {
+        color: #757575;
+    }
+
+    .maker a:not(.btn):not(.btn-large):not(.btn-floating), 
+    .maker .btn {
+        text-transform: uppercase;
+    }
+
+    .maker a:not(.btn):not(.btn-large):not(.btn-floating), 
+    .maker label, 
+    .maker .bar:before,
+    .make .bar:after {
+        -moz-transition: color .3s ease all;
+        -webkit-transition: color .3s ease all;
+        transition: color .3s ease all;
+    }
+
+    .maker .btn {
+        -moz-transition: .3s ease-out;
+        -webkit-transition: .3s ease-out;
+        transition: .3s ease-out;
+    }
+
+    .maker *, 
+    .maker *:after {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+
+    .maker body, 
+    .maker html, 
+    .maker .wrapper {
+        font-size: 14px;
+        background: #fafafa;
+        margin: 0;
+        padding: 0;
+        line-height: 1.5;
+        background-color: #fafafa;
+    }
+        @media (min-width: 601px) {
+            .maker body, 
+            .maker html, 
+            .maker .wrapper {
+                font-size: 13px;
+            }
+        }
+
+    .maker .wrapper {
+        max-width: 1180px;
+        margin: 0 auto;
+    }
+
+    .maker .container {
+        width: 85%;
+        margin: 0 auto;
+    }
+        @media (min-width: 601px) {
+            .maker .container {
+                width: 90%;
+            }
+        }
+        @media (min-width: 0px) {
+            .maker .container {
+                width: 95%;
+            }
+        }
+
+    .maker .jumbo-4 {
+        font-size: 112px;
+        font-weight: 200;
+        letter-spacing: -1.0;
+    }
+        @media (min-width: 601px) {
+            .maker .jumbo-4 {
+                font-size: 104px;
+            }
+        }
+
+    .maker .jumbo-3 {
+        font-size: 56px;
+        letter-spacing: -.5;
+    }
+        @media (min-width: 601px) {
+            .maker .jumbo-3 {
+                font-size: 52px;
+            }
+        }
+
+    .maker .jumbo-2 {
+        font-size: 45px;
+    }
+        @media (min-width: 601px) {
+            .maker .jumbo-2 {
+                font-size: 41px;
+            }
+        }
+
+    .maker .jumbo-1 {
+        font-size: 34px;
+    }
+    @media (min-width: 601px) {
+        .maker .jumbo-1 {
+            font-size: 31px;
+        }
+    }
+
+    .maker .headline { font-size: 24px; }
+        @media (min-width: 601px) {
+            .maker .headline { font-size: 22px;  }
+        }
+
+    .maker .title {
+        font-size: 20px;
+        font-weight: 500;
+        letter-spacing: .5;
+    }
+        @media (min-width: 601px) {
+            .maker .title { font-size: 18px; }
+        }
+
+    .maker .subHeading {
+        font-size: 16px;
+        letter-spacing: 1.0;
+    }
+        @media (min-width: 601px) {
+            .maker .subHeading { font-size: 14px; }
+        }
+
+    .maker .caption { font-size: 12px; }
+        @media (min-width: 601px) {
+            .maker .caption { font-size: 11px; }
+        }
+
+    .maker a:not(.btn):not(.btn-large):not(.btn-floating) {
+        margin-right: 20px;
+        text-decoration: none;
+    }
+    .maker a:not(.btn):not(.btn-large):not(.btn-floating):hover { color: #90CAF9; }
+
+    .maker .btn {
+/*        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19);*/
+        height: 36px;
+        padding: 0 32px;
+        background-color: #42A5F5;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 1.0;
+        color: #fff;
+        line-height: 36px;
+        border: 0;
+        border-radius: 2px;
+        text-align: center;
+        display: inline-block;
+        overflow: hidden;
+        z-index: 1;
+    }
+    .maker .btn:a { color: #fff; }
+    .maker .btn:hover {
+/*        box-shadow: 0 12.5px 20px rgba(0, 0, 0, 0.22), 0 17.5px 56px rgba(0, 0, 0, 0.25);*/
+        background-color: #90CAF9;
+    }
+
+    .maker .btn-large {
+        height: 54px;
+        line-height: 54px;
+    }
+
+    /* Forms */
+    .maker .form-group {
+        position: relative;
+        margin-bottom: 45px;
+    }
+
+    .maker .form-group label {
+        position: absolute;
+        left: 0;
+        top: -10px;
+        font-size: 10px;
+        line-height: 10px;
+    }
+
+    .maker input[type=text],
+    .maker input[type=password],
+    .maker input[type=email],
+    .maker input[type=date],
+    .maker input[type=time],
+    .maker input[type=textarea] {
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #dedede;
+        border-radius: 0;
+        outline: none;
+        height: 30px;
+        width: 100%;
+        margin: 0 0 20px 0;
+        padding: 0;
+        box-shadow: none;
+        box-sizing: content-box;
+        transition: all 0.3s;
+        font-size: 12px;
+    } 
+
+    .maker #editPatchName,
+    .maker #editMerchant {
+        text-transform: capitalize;
+    }
+
+    .maker input:focus { border-bottom: 1px solid #42A5F5; }
+    .maker input:focus ~ label
+/*    .maker input:valid ~ label*/ {
+        top: -15px;
+        font-size: 10px;
+        color: #42A5F5 !important;
+    }
+    .maker input:focus ~ .maker .highlight {
+        -webkit-animation: inputHighlighter 0.3s ease;
+        -moz-animation: inputHighlighter 0.3s ease;
+        animation: inputHighlighter 0.3s ease;
+    }
+    .maker input::placeholder { 
+        font-size: 10px;
+        color: #bdbdbd;
+    }
+
+    .maker .highlight {
+        position: absolute;
+        height: 60%;
+        width: 100px;
+        top: 25%;
+        left: 0;
+        pointer-events: none;
+        opacity: 0.5;
+    }
+    .maker .patchToggles a { 
+        padding: 4px 12px; 
+        text-align: center;
+        margin: 0 auto;
+    }
+    .maker .patchToggles i {
+        margin: 0 auto;
+        font-size: 40px;
+        color: #2196F3;
+        display: block;
+        clear: both;
+    }
+    .maker .patchToggles i:hover { opacity: .5; }
+    .maker .patchToggles figcaption {
+        color: #bdbdbd;
+        letter-spacing: 2px;
+        font-size: 10px;
+        text-transform: uppercase;
+    }
+    .maker .addButton i {
+        color: #2196F3;
+        font-size: 20px;
+        margin-top: 5px;
+    }
+    .maker .row.margin-bottom-0 { margin-bottom: 0; }
+
+    @-webkit-keyframes inputHighlighter {
+        from {
+            background: #2196f3;
+        }
+        to {
+            width: 0;
+            background: transparent;
+        }
+    }
+    @-moz-keyframes inputHighlighter {
+        from {
+            background: #2196f3;
+        }
+        to {
+            width: 0;
+            background: transparent;
+        }
+    }
+    @keyframes inputHighlighter {
+        from {
+            background: #2196f3;
+        }
+        to {
+            width: 0;
+            background: transparent;
+        }
+    }
+    .maker .bar {
+        position: relative;
+        display: block;
+        width: 100%;
+    }
+
+    .maker .bar:before,
+    .maker .bar:after {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 1px;
+        position: absolute;
+        background: #42A5F5;
+    }
+
+    .maker .bar:before {
+        left: 50%;
+    }
+
+    .maker .bar:after {
+      right: 50%;
+    }
+
+    .maker .clearfix {
+        display: inline-block;
+    }
+    .maker .clearfix:after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: "";
+        clear: both;
+        height: 0;
+        zoom: 1;
+    }
+
+    .maker header {
+        width: 100%;
+/*        background-color: #1e88e5;*/
+    }
+
+    .maker header .title {
+        color: #fff;
+    }
+
+    .maker header a:not(.btn):not(.btn-large):not(.btn-floating), 
+    .maker header input:focus ~ label, .maker header input:valid ~ label{ 
+        color: rgba(255,255,255,.7); 
+    }
+    .maker header nav ul li {
+        padding: 0 20px;
+        display: inline-block;
+    }
+    .maker header nav ul li a:hover { 
+        color: rgba(255,255,255,.5); 
+    }
+
+    .maker .row {
+        margin-left: -0.75rem;
+        margin-right: -0.75rem;
+        margin-bottom: 20px;
+    }
+
+    .maker .tile {
+        border: 1px solid #eee;
+        margin: 7px 0;
+        background-color: #fff;
+    }
+
+    .maker .section {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    /* Cards */
+    .maker .card-content {
+        width: 100%;
+        padding: 10px 20px;
+        display: block;
+    }
+
+    .maker .col-gutter-8 > .maker .col {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+    .maker .col-gutter-16 > .maker .col {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .maker .col-gutter-8 .maker .col:first-child,
+    .maker .col-gutter-16 .maker .col:first-child {
+      padding-left: 0;
+    }
+
+    .maker .col-gutter-8 .maker .col:last-child,
+    .maker .col-gutter-16 .maker .col:last-child {
+      padding-right: 0;
+    }
+
+    .maker .col-gutter-8 .maker .col:not(:first-child) label {
+      left: 8px;
+    }
+
+    .maker .col-gutter-16 .maker .col:not(:first-child) label {
+      left: 16px;
+    }
+
+    .maker .block {
+        display: block;
+        clear: both;
+    }
+    .maker ul { padding-left: 5%; }
+    .maker ul.idList li { color: #9e9e9e;}
+    .maker .strong { font-weight: 700; }
+
+    .maker .relative { position: relative; }
+    .maker .modal { display: none; }
+    .maker .tooltip-modal {
+        width: 300px;
+        height: 200px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: 10;
+    }
+    .maker .tooltip-modal .form-group { margin: 20px auto 0px;}
+    .maker .modal .controls {
+        text-align: right;
+        padding: 4px;
+    }
+    .maker .modal .controls i { font-size: 16px; }
+    .maker input[type=file] ~ label { margin-top: -5px;}
+    .maker .modal .btn { color: #fff !important; }
+    .maker #generateCreativeEmail,
+    .maker #generateApprovalsEmail,
+    .maker #generateScheduleEmail { display: none; }
+    .maker #creativeEmail,
+    .maker #approvalsEmail,
+    .maker #scheduleEmail { font-family: Helvetica, Arial, sans-serif; }
+
+    .maker .quickButton {
+        position: fixed;
+        width: 85px;
+        height: 85px;
+        text-align: center;
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        background: #2196F3;
+        color: #fff;
+        z-index: 9;
+    }
+    .maker .quickButton i,
+    .maker .quickButton a { color: #fff; }
+    .maker #loadEdits { 
+        bottom: 20px; 
+        right: 20px;
+    }
+    .maker #saveEdits {
+        bottom: 125px;
+        right: 20px;
+    }
+    .maker .underlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0,0,0,.8);
+        display: none;
+        z-index: 9;
+    }
+/*---------- Basic Styles & NM Overides -----------*/
+    .lookbook {
+        max-width: 1180px;
+        margin: 0 auto;
+        font-family: Futura, "Futura-PT", sans-serif;
+        font-size: 0;
+        color: #252525;
+        line-height: 1.5;
+        text-align: center;
+    }
+    /* Wrapper gutter varies by Lookbook 2 - 10% */
+    .lookbook .wrapper {
+        max-width: 875px;
+        padding: 0 2%;
+        margin: 0 auto;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+
+    .lookbook section { margin-bottom: 20px; }
+
+    .lookbook img.logo {
+      margin: 0 auto 20px auto;
+      max-width: 394px;
+    }
+
+/* ---------------- Headers --------------- */
+    .lookbook h1 {
+        margin: 0 0 21.6px;
+        /*font-family: "LTC-Bodoni-175", serif; */
+        font-family: Futura, "Futura-PT", sans-serif; 
+        font-size: 54px;
+        font-weight: 700;
+        font-style: normal;
+        color: inherit;
+        text-transform: uppercase; 
+    }
+    .lookbook h1.tight {
+        margin-bottom: 10px;
+        line-height: 54px;
+    }
+
+    .lookbook h2 {
+        margin: 10px 0px 8px;
+        font-family: Futura, "Futura-PT", sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+        font-style: normal;
+        color: inherit;
+        text-transform: none;
+    }
+    .lookbook header h2 { font-size: 24px; }
+    .lookbook h2.tight {
+        margin-bottom: 10px;
+        line-height: 20px;
+    }
+
+    .lookbook .underlined:after {
+        content: "";
+        width: 118px;
+        margin: 10px auto 0 auto;
+        border-bottom: 2px solid #000;
+        display: block;
+    }
+    .lookbook .black-background .underlined:after { border-bottom: 2px solid white; }
+
+/*------------- Base Font Sizes & Widgets ------------ */
+    .lookbook p { 
+        margin-bottom: 0;
+        font-size: 16px; 
+        color: inherit;
+    }
+    .lookbook p.tight { 
+        line-height: 16px;
+    }
+    .lookbook p.header,
+    .lookbook header p { 
+        font-size: 19px;
+        line-height: 24px;
+        margin-bottom: 20px;
+    }
+    .lookbook blockquote {
+        width: 55%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 19px;
+        line-height: 36px;
+    }    
+    .lookbook .uppercase { text-transform: uppercase; }
+    .lookbook .white { color: #fff; }
+    .lookbook .strong { font-weight: 700; }
+
+/* ------------ Links and Drives ------------- */
+    .lookbook a { 
+        margin: 0 auto;    
+        color: #252525;
+        text-decoration: none;        
+        display: block;
+        clear: both;
+    }
+    .lookbook .img a { padding: 0; }
+    .lookbook a:hover { color: #555; }
+    .lookbook a.tight { padding-bottom: 0; }
+
+    .lookbook .arrow:after,
+    .lookbook .shopDrive:after {
+        content: '\00a0\25B8';
+        position: relative;
+        bottom: 1px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    .lookbook .shopDrive, 
+    .lookbook .large-button,
+    .lookbook footer a {
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 13px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+    .lookbook .shopDrive { margin-top: 20px; }
+
+    .lookbook .large-button {
+        width: 30%;
+        padding: 15px 24px; 
+        color: #fff;
+        background-color: black;
+        border: 1px solid #000;
+    }
+    .lookbook .large-button:hover {
+        color: #000;
+        background-color: #fff;
+    }
+    .lookbook .large-button.white {
+        color: #000;
+        background-color: #fff;
+        border: 1px solid #000;
+    }
+    .lookbook .large-button.white:hover {
+        color: #fff;
+        background-color: #000;
+        border: 1px solid #fff;
+    }
+    .lookbook header .large-button { margin: 30px auto 40px; }
+    .lookbook a img:hover { opacity: 0.75; }
+
+/* ------------ Image Styles ------------ */
+    img { max-width: 100%; }
+    .figure-full-width img {
+        width: 100%;
+        display: block;
+    }
+
+/*----------------- Hotspots -----------------*/
+    .overlay { position: absolute; }
+    .hotspot {
+        width: 24px;
+        height: 24px;
+        background-image: url("/category/cat63460770/images/quicklook.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: block;
+    }
+
+/*--------------- Layout Styles ------------*/
+    /* Optional black-background header */
+    .lookbook .black-background {
+        font-size: 22px;        
+        padding: 8px;
+        background: #000;
+        color: #fff;
+    }
+    .lookbook .black-background a { color: inherit; }
+    .lookbook header { padding-top: 40px; }
+    .lookbook footer,
+    .lookbook footer.black-background { padding: 10px; }
+
+/*------------ Layout Styles ------------*/
+    .lookbook .large-img,
+    .lookbook .small-img {
+        padding: 0 1%;
+        display: inline-block;
+        direction: ltr;
+        vertical-align: middle;
+    }
+    .lookbook .text-left .large-img .img,
+    .lookbook .text-left .small-img .img,
+    .lookbook .text-right .large-img .img,
+    .lookbook .text-right .small-img .img,
+    .lookbook .text-left .large-img .text,
+    .lookbook .text-left .small-img .text,
+    .lookbook .text-right .large-img .text,
+    .lookbook .text-right .small-img .text { width: 100%; }  
+      
+    .lookbook .large-img { width: 60%; }
+    .lookbook .small-img { width: 40%; }
+    .lookbook .half-img { width: 48%;  }
+    .lookbook .third-img { width: 31%; }
+    .lookbook .half-img,
+    .lookbook .third-img {
+        margin-left: 1%;
+        margin-right: 1%;
+        padding: 10px;
+        display: inline-block;
+        vertical-align: top;
+    }
+    .lookbook .large-img,
+    .lookbook .small-img,
+    .lookbook .half-img,
+    .lookbook .third-img,
+    .lookbook .text-left,
+    .lookbook .text-right,
+    .lookbook .full-bleed,
+    .lookbook .full-img,
+    .lookbook .large-img,
+    .lookbook .small-img,
+    .lookbook .img,
+    .lookbook .text { 
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+    .lookbook .full-bleed { width: 100%; }
+    .lookbook .full-img { width: 70%; }
+    .lookbook .full-img,
+    .lookbook .full-bleed {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 10px;
+    }
+  
+    .lookbook .text-left { direction: rtl; }
+    .lookbook .text-left .text { direction: ltr; }
+
+    .lookbook .text-left .img,
+    .lookbook .text-right .img {
+        width: 60%;
+        margin-right: 1%;
+        margin-left: 1%;
+        padding: 2px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .lookbook .text-left .text,
+    .lookbook .text-right .text { 
+        width: 40%; 
+        padding-top: 1.5%;
+        padding-bottom: 1.5%;
+    }
+
+    .lookbook .text-right .text,
+    .lookbook .text-left .img { margin-left: -3%; }
+
+    .lookbook .text {
+        width: 100%;
+        padding: 2.5% 2.5% 0 2.5%;
+        background: white;
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+    }
+
+    .lookbook .quote { display: table; }
+    .lookbook .quote .half-img { 
+        display: table-cell; 
+        vertical-align: middle;
+    }    
+
+/* ------- Misc. Layout Options & Widgets -------- */
+    .lookbook .clearfix:after {
+        content: " "; /* Older browser do not support empty content */
+        visibility: hidden;
+        display: block;
+        height: 0;
+        clear: both;
+    }
+    .lookbook .tight { 
+        margin-bottom: 5px; 
+        margin-top: 0px; 
+        padding-top: 0px; 
+        padding-bottom: 0px; 
+    }
+    .lookbook .sr-only {
+        position: absolute;
+        margin: -1px 0 0 -1px;
+        padding: 0;
+        display: block;
+        width: 1px;
+        height: 1px;
+        font-size: 1px;
+        line-height: 1px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        border: 0;
+        outline: 0;
+    }
+
+    .pad-top-0 { padding-top: 0; }
+    .pad-top-10 { padding-top: 10px; }
+    .pad-top-20 { padding-top: 20px; }
+    .pad-bottom-0 { padding-bottom: 0; }
+    .pad-bottom-10 { padding-bottom: 10px; }
+    .pad-bottom-20 { padding-bottom: 20px; }
+
+    .margin-top-0 { margin-top: 0; }
+    .margin-top-10 { margin-top: 10px;}
+    .margin-top-20 { margin-top: 20px;}
+    .margin-top-30 {margin-top: 30px;}
+    .margin-bottom-0 { margin-bottom: 0; }
+    .margin-bottom-10 { margin-bottom: 10px; }
+    .margin-bottom-20 { margin-bottom: 20px;}
+    .margin-bottom-30 {margin-bottom: 40px; }
+
+    .block { display: block; }
+
+/*-------------- Mobile Layout Styles  ----------------*/
+        @media screen and (min-width: 0px) and (max-width: 640px) {
+            .lookbook header,
+            .lookbook footer { 
+                padding-left: 2%;
+                padding-right: 2%;
+            }
+            .lookbook header.black-background,
+            .lookbook footer.black-background {
+                margin-left: 2%;
+                margin-right: 2%;
+            }            
+            .lookbook h1 { font-size: 54px; }
+            .lookbook p,
+            .lookbook a { font-size: 16px; }
+            .lookbook a.shopDrive { font-size: 15px; }
+            .lookbook blockquote { 
+                width: 75%; 
+                padding-top: 20px;
+                padding-bottom: 40px;
+            }            
+
+            .lookbook .third-img { width: 48%; }
+            
+            .lookbook .large-img,
+            .lookbook .small-img,
+            .lookbook .half-img,
+            .lookbook .text-right,
+            .lookbook .text-left,
+            .lookbook .text-right .text,
+            .lookbook .text-left .text,
+            .lookbook .text-right .img,
+            .lookbook .text-left .img,
+            .lookbook .full-img,
+            .lookbook .full-bleed,
+            .lookbook .text,
+            .lookbook .img { 
+                width: 100%; 
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .lookbook .text-left .img, 
+            .lookbook .text-right .img{
+                padding: 0;
+            }
+            .lookbook .text-right,
+            .lookbook .text-left { 
+                padding: 10px;
+                display: block;
+            }
+            .lookbook .img {
+                padding: 0;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .lookbook .large-button,
+            .lookbook .large-button.white {
+              margin-top: 20px;
+              width: auto;
+            }
+
+            .lookbook .quote { display: block; }
+            .lookbook .quote .half-img { 
+                display: block; 
+                vertical-align: top;
+            }             
+        }
+        @media screen and (min-width: 0px) and (max-width: 480px) {
+            .lookbook header { padding-top: 10px; }
+            .lookbook h1 { font-size: 48px; }
+            .lookbook header h2 { font-size: 20px; }
+            .lookbook blockquote { width: 100%; }  
+            .lookbook .third-img { 
+                width: 100%; 
+                display:block;
+            }      
+        }
+    }

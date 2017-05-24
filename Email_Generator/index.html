@@ -1,0 +1,431 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans" rel="stylesheet">
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="js/main.js"></script>        
+        <style type="text/css">
+            label { display: block; }
+            ul li { list-style: none; }
+            button { margin-bottom: 40px; }
+            a { color: blue; }
+            .wrapper { padding: 0 15px; }
+            .form-control { padding: 6px; }
+        </style>
+    </head>
+
+<body class="maker">
+    <div class="underlay"></div>
+    <div id="saveEdits" class="quickButton patchToggles card-panel-5">
+        <a href="#">
+            <figure>
+                <i class="fa fa-cloud-download " aria-hidden="true"></i>
+            </figure>
+            <figcaption>
+                Save
+            </figcaption>
+        </a> 
+    </div>
+    <div id="loadEdits" class="quickButton patchToggles card-panel-5">        
+        <a href="#" class="modal-toggle">
+            <figure>
+                <i class="fa fa-cloud-upload " aria-hidden="true"></i>
+            </figure>
+            <figcaption>
+                Load
+            </figcaption>
+        </a> 
+    </div>
+
+        <div id="loadFileModal" class="row tooltip-modal modal">
+            <section class="card-panel-4">
+                <div class="card-content">
+                    <div class="row">
+                        <section class="controls">
+                            <i class="fa fa-window-close modal-close" aria-hidden="true"></i>
+                        </section>
+                    </div>
+                    <figure class="form-group">
+                        <input id="loadFile" type="file" class="form-control" required>
+                        <label for="loadFile">Select a file to load:</label>
+                    </figure>
+                    <figure class="form-group">
+                        <input id="fileSubmit" type="button" class="btn form-control" value="Load File">
+                    </figure>                                              
+                </div>
+            </section>
+        </div>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" id="patchDetailTab"><i class="fa fa-id-card" aria-hidden="true"></i>Patch Details</a></li>
+                <li><a href="#" id="creativeEmailTab"><i class="fa fa-picture-o" aria-hidden="true"></i>Creative Approvals E-Mail</a></li>
+                <li><a href="#" id="approvalEmailTab"><i class="fa fa-handshake-o" aria-hidden="true"></i>Production Approvals E-Mail</a></li>
+                <li><a href="#" id="scheduleEmailTab"><i class="fa fa-rocket" aria-hidden="true"></i>Schedule Lookbook</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="patchDetails" class="wrapper">
+        <div class="row">
+            <section class="card-panel-2">
+                <div class="card-content">
+                    <div class="row">
+                        <article class="col-xs-12">
+                            <p class="title">Patch Details</p>
+                            <p>Please fill out patch information as provided by the accompanying job form.</p>
+                        </article>
+                    </div>
+                    <hr>
+                    <form>
+                        <div class="row margin-bottom-0">
+                            <article class="col-xs-12 col-sm-6">
+                                 <figure class="form-group">
+                                    <input id="editPatchName" type="text" class="form-control" required placeholder="Patch Name" tabindex="1">
+                                    <label for="editPatchName">Patch Name:</label>
+                                </figure> 
+                            </article>
+                            <article class="col-xs-12 col-sm-6">
+                                <figure class="form-group">
+                                    <span>
+                                        <input id="editMerchant" type="text" class="form-control" required placeholder="Merchant Name" tabindex="2">                                        
+                                        <label for="editMerchant">Merchant:</label>
+                                    </span>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                </figure> 
+                            </article>
+<!-- Patch Times -->
+                            <article class="col-no-pad col-xs-12 col-sm-6 col-md-4">
+                                <article class="col-xs-6 col-sm-6"> 
+                                    <figure class="form-group">
+                                        <input id="editLiveDate" type="date" class="form-control" required tabindex="3">
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label for="editLiveDate">Patch Date:</label>
+                                    </figure>
+                                </article>
+                                <article class="col-xs-6 col-sm-6"> 
+                                    <figure class="form-group">
+                                        <input id="editLiveTime" type="time" class="form-control" required>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label for="editLiveTime">Patch Time:</label>
+                                    </figure>
+                                </article>                                
+                            </article>
+                            <article class="col-no-pad col-xs-12 col-sm-6 col-md-4">
+                                <article class="col-xs-6 col-sm-6">                            
+                                    <figure class="form-group">
+                                        <input id="editProdIDDate" type="date" class="form-control">
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label for="editProdIDDate">ProductID Turnover Date:</label>
+                                    </figure>
+                                </article>
+                                <article class="col-xs-6 col-sm-6">  
+                                    <figure class="form-group">
+                                        <input id="editProdIDTime" type="time" class="form-control">
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label for="editProdIDTime">ProductID Turnover Time:</label>
+                                    </figure>
+                                </article>                                
+                            </article>                            
+                            <article class="col-no-pad col-xs-12 col-sm-6 col-md-4">
+                                <article class="col-xs-6 col-sm-6">
+                                    <figure class="form-group">
+                                        <input id="editCreativeDate" type="date" class="form-control">
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label for="editCreativeDate">Creative Approvals Date:</label>
+                                    </figure>
+                                </article>
+                                <article class="col-xs-6 col-sm-6">
+                                    <figure class="form-group">
+                                        <input id="editCreativeTime" type="time" class="form-control">
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label for="editCreativeTime">Creative Approvals Time:</label>
+                                    </figure>
+                                </article>
+                            </article>
+<!-- Folder -->                            
+                            <article class="col-xs-12 col-sm-6">
+                                <figure class="form-group">
+                                    <input id="editFolder" type="text" class="form-control" required placeholder="Category Folder Name" tabindex="4">
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label for="editFolder">Folder:</label>
+                                </figure> 
+                            </article>  
+                            <article class="col-xs-12 col-sm-6">
+                                <figure class="form-group">
+                                    <input id="editPSD" type="text" class="form-control" required placeholder="Creative .jpg Asset Location" tabindex="5">
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label for="editPSD">Comp / Mock (.jpg) Location:</label>
+                                </figure> 
+                            </article> 
+                        </div>                           
+                    </form> 
+                    <div class="row margin-bottom-0">
+<!-- Patch Specifics -->                    
+                        <section class="col-xs-12 col-sm-4">
+                            <p class="title margin-bottom-20">Patch Specifics</p>
+                            <hr>
+                            <div class="row">
+                                <article class="col-xs-10">
+                                     <figure class="form-group">
+                                        <input id="editLookbookID" type="text" class="form-control" required placeholder="Lookbook catID" tabindex="6">
+                                        <label for="editLookbookID">Lookbook CatID:</label>
+                                    </figure> 
+                                </article>
+                                <article class="col-xs-2 text-center addButton">
+                                    <figure class="form-group">
+                                        <a href="#" id="editLookBookIDbtn"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                                        <label>ADD</label>
+                                    </figure>
+                                </article>                                 
+                            </div> 
+                            <div class="row">
+                                <article class="col-xs-10">
+                                    <figure class="form-group">
+                                        <input id="editGraphicHeaderID" type="text" class="form-control" required placeholder="Graphic Header catID" tabindex="7"> 
+                                        <label for="editGraphicHeaderID">Graphic Header CatID:</label>
+                                    </figure> 
+                                </article>
+                                <article class="col-xs-2 text-center addButton">
+                                    <figure class="form-group">
+                                        <a href="#" id="editGraphicHeaderIDbtn"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                                        <label>ADD</label>
+                                    </figure>
+                                </article>                                 
+                            </div>
+                            <div class="row">
+                                <article class="col-xs-10">
+                                     <figure class="form-group">
+                                        <input id="editSiloID" type="text" class="form-control" required placeholder="Silo Banner catID" tabindex="8">
+                                        <label for="editSiloID">Silo Banner CatID:</label>
+                                    </figure> 
+                                </article>
+                                <article class="col-xs-2 text-center addButton">
+                                    <figure class="form-group">
+                                        <a href="#" id="editSiloIDbtn"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                                        <label>ADD</label>
+                                    </figure>
+                                </article>                                 
+                            </div>
+                            <div class="row">
+                                <article class="col-xs-10">
+                                     <figure class="form-group">
+                                        <input id="editPromoTile" type="text" class="form-control" required placeholder="Promotile Filename (exclude .html)" tabindex="9">
+                                        <label for="editPromoTile">Promotile Filename (exclude .html):</label>
+                                    </figure> 
+                                </article>
+                                <article class="col-xs-2 text-center addButton">
+                                    <figure class="form-group">
+                                        <a href="#" id="editPromoTilebtn"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                                        <label>ADD</label>
+                                    </figure>
+                                </article>                                 
+                            </div>                                                                                                                
+                        </section>
+                        <section class="col-xs-12 col-sm-4">
+                            <p class="title margin-bottom-20">Category IDs</p>
+                            <hr>
+                            <p class="strong lookbookIDList">Lookbook CatID(s)</p>
+                                <ul id="lookbookList" class="idList">
+                                </ul>
+                            <p class="strong graphicHeaderIDList">Graphic Header CatID(s)</p>
+                                <ul id="graphicheaderList" class="idList">
+                                </ul>  
+                            <p class="strong siloBannerIDList">Silo Banner CatID(s)</p>
+                                <ul id="siloBannerList" class="idList">
+                                </ul>  
+                            <p class="strong promoTileIDList">Promotile(s)</p>
+                                <ul id="promoTileList" class="idList">
+                                </ul>                                                               
+                        </section>
+<!--                         <section class="col-xs-12 col-sm-4 text-center patchToggles">
+                            <article class="col-xs-12 col-sm-4">
+                                <a href="#" id="saveEdits">
+                                    <figure>
+                                        <i class="fa fa-cloud-download " aria-hidden="true"></i>
+                                    </figure>
+                                    <figcaption>
+                                        Save
+                                    </figcaption>
+                                </a>   
+                            </article>
+                            <article class="col-xs-12 col-sm-4 relative">
+                                <a href="#" id="loadEdits" class="modal-toggle">
+                                    <figure>
+                                        <i class="fa fa-cloud-upload " aria-hidden="true"></i>
+                                    </figure>
+                                    <figcaption>
+                                        Load
+                                    </figcaption>
+                                </a> 
+                                <div id="loadFileModal" class="row tooltip-modal modal">
+                                    <section class="card-panel-4">
+                                        <div class="card-content">
+                                            <div class="row">
+                                                <section class="controls">
+                                                    <i class="fa fa-window-close modal-close" aria-hidden="true"></i>
+                                                </section>
+                                            </div>
+                                            <figure class="form-group">
+                                                <input id="loadFile" type="file" class="form-control" required>
+                                                <label for="loadFile">Select a file to load:</label>
+                                            </figure>
+                                            <figure class="form-group">
+                                                <input id="fileSubmit" type="button" class="btn form-control" value="Load File">
+                                            </figure>                                              
+                                        </div>
+                                    </section>
+                                </div>                                  
+                            </article>  
+                            <article class="col-xs-12 col-sm-4">
+                                <a href="#" id="continueEdits">
+                                    <figure>
+                                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    </figure>
+                                    <figcaption>
+                                        Generate E-mail
+                                    </figcaption>
+                                </a>   
+                            </article>                                                       
+                        </section> -->
+                    </div>                      
+                </div>
+            </section>
+        </div>
+    </div> <!-- EoF Patch Details -->
+
+    <div id="generateCreativeEmail" class="wrapper">
+        <div class="row">
+            <section class="card-panel-2">
+                <div class="card-content">
+                    <div class="row">
+                        <article class="col-xs-11">
+                            <p class="title">Creative Turnover E-Mail</p>
+                            <hr>
+                        </article>
+                        <article class="col-xs-1 text-center">
+                            <a id="refreshEmail" href="#" class="addButton"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                        </article>
+                    </div>
+                    <div class="row">
+                        <article class="col-xs-12">
+                            <div id="creativeEmail" contenteditable="true"></div>
+                        </article>
+                    </div>
+                    <div class="row">
+                        <article class="col-xs-10"></article>
+                        <article class="col-xs-2 text-center patchToggles"> 
+                            <a href="#" id="copyCreativeEmail">
+                                <figure>                                              
+                                    <i class="fa fa-clipboard" aria-hidden="true"></i>
+                                </figure>
+                                <figcaption>
+                                    Copy to<br/> Clipboard
+                                </figcaption>
+                            </a>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="generateApprovalsEmail" class="wrapper">
+        <div class="row">
+            <section class="card-panel-2">
+                <div class="card-content">
+                    <div class="row">
+                        <article class="col-xs-11">
+                            <p class="title">Approvals Distro E-Mail</p>
+                            <hr>
+                        </article>
+                        <article class="col-xs-1 text-center">
+                            <a id="refreshApprovalsEmail" href="#" class="addButton"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                        </article>
+                    </div>
+                    <div class="row">
+                        <article class="col-xs-12">
+                            <div id="approvalsEmail" contenteditable="true"></div>
+                        </article>
+                    </div>
+                    <div class="row">
+                        <article class="col-xs-10"></article>
+                        <article class="col-xs-2 text-center patchToggles"> 
+                            <a href="#" id="copyApprovalsEmail">
+                                <figure>                                              
+                                    <i class="fa fa-clipboard" aria-hidden="true"></i>
+                                </figure>
+                                <figcaption>
+                                    Copy to<br/> Clipboard
+                                </figcaption>
+                            </a>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="generateScheduleEmail" class="wrapper">
+        <div class="row">
+            <section class="card-panel-2">
+                <div class="card-content">
+                    <div class="row">
+                        <article class="col-xs-11">
+                            <p class="title">Schedule E-Mail</p>
+                            <hr>
+                        </article>
+                        <article class="col-xs-1 text-center">
+                            <a id="refreshScheduleEmail" href="#" class="addButton"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                        </article>
+                    </div>
+                    <div class="row">
+                        <article class="col-xs-12">
+                            <div id="scheduleEmail" contenteditable="true"></div>
+                        </article>
+                    </div>
+                    <div class="row">
+                        <article class="col-xs-10"></article>
+                        <article class="col-xs-2 text-center patchToggles"> 
+                            <a href="#" id="copyScheduleEmail">
+                                <figure>                                              
+                                    <i class="fa fa-clipboard" aria-hidden="true"></i>
+                                </figure>
+                                <figcaption>
+                                    Copy to<br/> Clipboard
+                                </figcaption>
+                            </a>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+
+
+
+    </body>
+</html>
+
+
