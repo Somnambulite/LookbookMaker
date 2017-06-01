@@ -971,6 +971,17 @@
         display: none;
         z-index: 9;
     }
+    .maker .summary {
+        border: 1px solid #ccc;
+        padding-bottom: 20px;
+        border-radius: 6px;
+    }
+    .maker .editPrev br { 
+        display: none;
+    }
+    .maker .editing {
+        color: red !important;
+    }
 /*---------- Basic Styles & NM Overides -----------*/
     .lookbook {
         max-width: 1180px;

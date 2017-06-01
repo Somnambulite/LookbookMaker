@@ -73,6 +73,7 @@
                 <li><a href="#" id="creativeEmailTab"><i class="fa fa-picture-o" aria-hidden="true"></i>Creative Approvals E-Mail</a></li>
                 <li><a href="#" id="approvalEmailTab"><i class="fa fa-handshake-o" aria-hidden="true"></i>Production Approvals E-Mail</a></li>
                 <li><a href="#" id="scheduleEmailTab"><i class="fa fa-rocket" aria-hidden="true"></i>Schedule Lookbook</a></li>
+                <li><a href="#" id="icidTab"><i class="fa fa-barcode" aria-hidden="true"></i>ICID Generator</a></li>                
             </ul>
         </nav>
     </header>
@@ -83,7 +84,7 @@
                     <div class="row">
                         <article class="col-xs-12">
                             <p class="title">Patch Details</p>
-                            <p>Please fill out patch information as provided by the accompanying job form.</p>
+                            <p>Please fill out patch information as provided by the accompanying job form. To edit an item, select the appropriate field and edit as desired.</p>
                         </article>
                     </div>
                     <hr>
@@ -183,6 +184,7 @@
 <!-- Patch Specifics -->                    
                         <section class="col-xs-12 col-sm-4">
                             <p class="title margin-bottom-20">Patch Specifics</p>
+                            <p>Include category IDs for all applicable items. Pre-fix any entry with "cat". IE: cat123456</p>
                             <hr>
                             <div class="row">
                                 <article class="col-xs-10">
@@ -241,8 +243,9 @@
                                 </article>                                 
                             </div>                                                                                                                
                         </section>
-                        <section class="col-xs-12 col-sm-4">
+                        <section class="summary col-xs-12 col-sm-4">
                             <p class="title margin-bottom-20">Category IDs</p>
+                            <p>To edit an entry you've previously made, click the appropriate item. Lists will appear empty before inputs have been made.</p>
                             <hr>
                             <p class="strong lookbookIDList">Lookbook CatID(s)</p>
                                 <ul id="lookbookList" class="idList">
@@ -421,10 +424,45 @@
         </div>
     </div>
 
+    <div id="icidGenerator" class="wrapper">
+        <div class="row">
+            <section class="card-panel-2">
+                <div class="card-content">
+                    <div class="row">
+                        <article class="col-xs-11">
+                            <p class="title">ICID Generator</p>
+                            <p>Generated ICIDs can be copied and pasted into the running ICID Excel spreadsheet found in the current month's Lookbook Alias folder.</p>
+                            <hr>
+                        </article>
+                        <article class="col-xs-1 text-center">
+                            <a id="refreshICID" href="#" class="addButton"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                        </article>
+                    </div>
+                    <div class="row">
+                        <article class="col-xs-12">
+                            <div id="icidOutput" contenteditable="true"></div>
+                        </article>
+                    </div>
+                    <div class="row">
+                        <article class="col-xs-10"></article>
+                        <article class="col-xs-2 text-center patchToggles"> 
+                            <a href="#" id="copyICID">
+                                <figure>                                              
+                                    <i class="fa fa-clipboard" aria-hidden="true"></i>
+                                </figure>
+                                <figcaption>
+                                    Copy to<br/> Clipboard
+                                </figcaption>
+                            </a>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
 
 
-
-
+<p style="font-size:10px; margin: 40px auto 5px; text-align:center;">Version 1.0.0</p>
     </body>
 </html>
 

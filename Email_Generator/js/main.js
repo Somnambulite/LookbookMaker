@@ -15,7 +15,8 @@ $(document).ready(function() {
 		patchSiloBanner: [],
 		patchPromoTile: []
 	}];
-	var merchant = '';
+	var merchant;
+	var liveDate;
 
 // Validation color change 
 	$('.form-control').focusout(function() {
@@ -36,6 +37,7 @@ $(document).ready(function() {
 		// Add predictive merchant
 			predictiveMerchant(patchKey);
 		}
+		folderName();
 	});
 // remove 'Lookbook' title from patchName as required
 	$('#editPatchName').focus(function() {
@@ -48,70 +50,67 @@ $(document).ready(function() {
 // Automatic Merchant Fill
 	function predictiveMerchant(patchKey) {
 		patchKey = patchKey.toLowerCase();
-		var nameSplit = patchKey.split(' ');
 
-		console.log(nameSplit);
+		var shoes = ['shoe','slide','heel','weitzman'];
+		var accessories = ['sunglass','accessories','accessory','handbag','hand'];
+		var home = ['home','house'];
+		var contemporary = ['contemporary','cusp',"women's swim",'active'];
+		var beauty = ['fragrance','beauty','makeup'];
+		var special = ['fisher','special','petite','plus'];
+		var jewelry = ['yurman','pj','bj','precious','bejeweled','jewel','ippolita'];
+		var notfound = true;
 
-		for(x = 0; x < nameSplit.length; x++) {
-			if(!$.inArray(nameSplit[x], ['shoes', 'slides', 'heels', 'weitzman'])) {
-				console.log('IS');
-				merchant = 'Ashley Spaulding';
-			} else {
-				merchant = '';
-			}
+		for(x = 0; x < shoes.length; x++) {
+		  if (patchKey.indexOf(shoes[x]) > -1) {
+		      	merchant = "Ashley Spaulding";
+		      	notfound = false;
+		    }
 		}
-		// if ([('shoes', 'slides', 'heels', 'weitzman')].indexOf(nameSplit) >= 0) {
-		// 	console.log('TTU');
-		// 	merchant = 'Ashley Spaulding';
-		// 	console.log(merchant);
-		// }
+		for(x = 0; x < accessories.length; x++) {
+		  if (patchKey.indexOf(accessories[x]) > -1) {
+		      merchant = "Michelle Mrowka";
+		      notfound = false;
+		    } 
+		}
+		for(x = 0; x < home.length; x++) {
+		  if (patchKey.indexOf(home[x]) > -1) {
+		      merchant = "Judy Liu";
+		      notfound = false;
+		    } 
+		}	
+		for(x = 0; x < contemporary.length; x++) {
+		  if (patchKey.indexOf(contemporary[x]) > -1) {
+		      merchant = "Natasha Burns";
+		      notfound = false;
+		    } 
+		}		
+		for(x = 0; x < beauty.length; x++) {
+		  if (patchKey.indexOf(beauty[x]) > -1) {
+		      merchant = "Nicolas Ochoa";
+		      notfound = false;
+		    } 
+		}
+		for(x = 0; x < special.length; x++) {
+		  if (patchKey.indexOf(special[x]) > -1) {
+		      merchant = "Gentry Rush";
+		      notfound = false;
+		    } 
+		}
+		for(x = 0; x < jewelry.length; x++) {
+		  if (patchKey.indexOf(jewelry[x]) > -1) {
+		      merchant = "Lauren Perella";
+		      notfound = false;
+		    } 
+		}		
 
-		// switch(term) {
-	 //       		case "shoe":
-	 //       		case "slides":
-	 //       		case "heels":
-	 //       		case "weitzman":
-	 //       			merchant = 'Ashley Spaulding';
-	 //       			break;
-		// 		case "sunglass":
-		// 		case "accessories":
-		// 			merchant = 'Michelle Mrowka';	
-		// 			break;
-		// 		case "men":
-		// 		case "home":
-		// 			merchant = 'Judy Liu';	
-		// 			break;				
-		// 		case "active":
-		// 		case "swim":
-		// 		case "contemporary":
-		// 		case "cusp":
-		// 			merchant = 'Natasha Burns';	
-		// 			break;	
-		// 		case "beauty":
-		// 		case "fragrance":
-		// 			merchant = 'Nicolas Ochoa';	
-		// 			break;	
-		// 		case "fisher":
-		// 		case "special":
-		// 			merchant = 'Gentry Rush';	
-		// 			break;
-		// 		case "yurman":
-		// 		case "jewel":
-		// 		case "ippolita":
-		// 		case "precious":
-		// 			merchant = 'Lauren Perella';	
-		// 			break;									
-		// 		default:
-		// 			merchant = 'Courtney Carruth / Jennifer Berke';
-		// 	}; // EoF Merchant Switch
+		if(notfound != false) {
+			merchant = 'Courtney Carruth / Jennifer Berke';
+		}	
 		merchant = merchant;
-
-
 
 		if(merchant != '') {
 			$('#editMerchant').val(merchant);
 			buildPatch[0].patchMerchant = merchant;
-			console.log(buildPatch[0].patchMerchant);
 		};
 	};
 
@@ -122,52 +121,78 @@ $(document).ready(function() {
 		console.log( buildPatch[0].patchMerchant);
 	});
 
+
 // Patch Live Date
 	$('#editLiveDate').blur(function() {
-		var liveDate = $('#editLiveDate').val();
-		$('#editLiveTime').val('17:00').css('color','#8bc34a');
-		
+		buildPatch[0].patchLiveDate = $('#editLiveDate').val();
+		liveDate = buildPatch[0].patchLiveDate;
+
 		dateFill(liveDate);
+		folderName();
+	});
 
-		function dateFill(liveDate) {
-			hex = new Date(liveDate);
-			var idDue = new Date(hex.setDate(hex.getDate() - 1));
-			var creative = new Date(idDue);
-			var creativeDue = new Date(creative.setDate(creative.getDate() - 5));
+	function dateFill(liveDate) {
+		hex = new Date(liveDate);
+		var idDue = new Date(hex.setDate(hex.getDate() - 1));
+		var creative = new Date(idDue);
+		var creativeDue = new Date(creative.setDate(creative.getDate() - 5));
 
-			function setTime(creativeDue, idDue) {
-				var creativeDate = creativeDue.getFullYear() + "-" + ("0"+(creativeDue.getMonth()+1)).slice(-2) + "-" + ("0" + creativeDue.getDate()).slice(-2);
-				var productIDDate = idDue.getFullYear() + "-" + ("0"+(idDue.getMonth()+1)).slice(-2) + "-" + ("0" + idDue.getDate()).slice(-2);	
-				$('#editCreativeDate').val(creativeDate).css('color','#8bc34a');
-				$('#editCreativeTime').val('17:00').css('color','#8bc34a');
-				$('#editProdIDDate').val(productIDDate).css('color','#8bc34a');
-				$('#editProdIDTime').val('09:00').css('color','#8bc34a');
-			}
-
-			if(idDue.getDay() === 6) {
-				idDue = new Date(hex.setDate(hex.getDate() - 1));
-				setTime(creativeDue, idDue);
-			} else 
-			if(idDue.getDay() === 0) {
-				idDue = new Date(hex.setDate(hex.getDate() - 2));
-				setTime(creativeDue, idDue);	
+		function setTime(creativeDue, idDue) {
+			var creativeDate = creativeDue.getFullYear() + "-" + ("0"+(creativeDue.getMonth()+1)).slice(-2) + "-" + ("0" + creativeDue.getDate()).slice(-2);
+			var productIDDate = idDue.getFullYear() + "-" + ("0"+(idDue.getMonth()+1)).slice(-2) + "-" + ("0" + idDue.getDate()).slice(-2);	
+			$('#editCreativeDate').val(creativeDate).css('color','#8bc34a');
+			$('#editCreativeTime').val('17:00').css('color','#8bc34a');
+			$('#editProdIDDate').val(productIDDate).css('color','#8bc34a');
+			$('#editProdIDTime').val('09:00').css('color','#8bc34a');
+			if($('#editLiveTime').val() === '') {
+				$('#editLiveTime').val('17:00').css('color','#8bc34a');
 			} else {
-				setTime(creativeDue, idDue);		
+				$(this).val(buildPatch[0].patchLiveTime);
 			}
-			buildPatch[0].patchLiveDate = $('#editLiveDate').val();
-			buildPatch[0].patchLiveTime = $('#editLiveTime').val();
-			buildPatch[0].patchCreativeDate = $('#editCreativeDate').val();
-			buildPatch[0].patchCreativeTime = $('#editCreativeTime').val();
-			buildPatch[0].patchProdIDDate = $('#editProdIDDate').val();
-			buildPatch[0].patchProdIDTime = $('#editProdIDTime').val();
-		};
 
+		}
+
+		if(idDue.getDay() === 6) {
+			idDue = new Date(hex.setDate(hex.getDate() - 1));
+			setTime(creativeDue, idDue);
+		} else 
+		if(idDue.getDay() === 0) {
+			idDue = new Date(hex.setDate(hex.getDate() - 2));
+			setTime(creativeDue, idDue);	
+		} else {
+			setTime(creativeDue, idDue);		
+		}
+		buildPatch[0].patchLiveDate = $('#editLiveDate').val();
+		buildPatch[0].patchLiveTime = $('#editLiveTime').val();
+		buildPatch[0].patchCreativeDate = $('#editCreativeDate').val();
+		buildPatch[0].patchCreativeTime = $('#editCreativeTime').val();
+		buildPatch[0].patchProdIDDate = $('#editProdIDDate').val();
+		buildPatch[0].patchProdIDTime = $('#editProdIDTime').val();
+	};
+
+	$('#editLiveTime').blur(function() {
+		buildPatch[0].patchLiveTime = $('#editLiveTime').val();
+		folderName();
+	});
+
+	$('#editCreativeTime').blur(function() {
+		buildPatch[0].patchCreativeTime = $('#editCreativeTime').val();
+	});
+
+	$('#editProdIDTime').blur(function() {
+		buildPatch[0].patchProdIDTime = $('#editProdIDTime').val();
+	});	
+
+	function folderName() {
 	// Generate Folder Name based on field inputs (date + patchName)
 		if($('#editPatchName').hasClass('validated')) {
-			var parseDate = new Date(liveDate);
-			var spcStrip = $('#editPatchName').val().split(' ').join('').split('Lookbook').join('').split("'").join('');
+			var parseDate = buildPatch[0].patchLiveDate;
+			var spcStrip = buildPatch[0].patchName.split(' ').join('').split('Lookbook').join('').split("'").join('');
+			var month = buildPatch[0].patchLiveDate.substr(5,2);
+			var day = buildPatch[0].patchLiveDate.substr(8,2);
+			var year = buildPatch[0].patchLiveDate.substr(2,2);
 			function parseTime(time) {
-				var time = time;
+				var time = buildPatch[0].patchLiveTime;
 				switch(time) {
 					case '17:00':
 						return '5pm';
@@ -181,11 +206,12 @@ $(document).ready(function() {
 					default:
 						return '';
 				};
-			};
-			$('#editFolder').val(("0"+(parseDate.getMonth()+1)).slice(-2) + "_" + ("0" + parseDate.getDate()).slice(-2) + "_" + parseDate.getFullYear().toString().substr(2,2) + "_" + parseTime($('#editLiveTime').val()) + "_" + "LkBk_" + spcStrip);
+			}
+	}
+			// $('#editFolder').val(month + '_' + day + '_' + year + "_" + buildPatch[0].patchLiveTime + "_" + "LkBk_" + spcStrip);
+			$('#editFolder').val(month + "_" + day + "_" + year + "_" + parseTime(buildPatch[0].patchLiveTime) +  "_LkBk_" + spcStrip);
 			buildPatch[0].patchFolder = $('#editFolder').val();
-		};
-	});
+	};
 
 	$('#editPSD').blur(function() {
 		var creativeURI = $('#editPSD').val().replace("afp://nm93fs3/E_Creative_Intranet_Site","http://nmo_creative");
@@ -205,17 +231,17 @@ $(document).ready(function() {
 	});
 
 	function loadFile() {
-		// var readerTarget = $('#loadFile');
-		// var upload = readerTarget[0].files[0];
-		// if (upload) {
-		// 	var fr = new FileReader();
-		// 	fr.onload = function() {
-		// 		var jsonPass = JSON.parse(fr.result);
-		// 		buildPatch = buildPatch.concat(jsonPass);
-		// 		loadPatch(jsonPass);
-		// 	};
-		// 	fr.readAsText(upload);
-		// } 
+		var readerTarget = $('#loadFile');
+		var upload = readerTarget[0].files[0];
+		if (upload) {
+			var fr = new FileReader();
+			fr.onload = function() {
+				var jsonPass = JSON.parse(fr.result);
+				buildPatch = buildPatch.concat(jsonPass);
+				loadPatch(jsonPass);
+			};
+			fr.readAsText(upload);
+		} 
 
 	};
 
@@ -263,19 +289,19 @@ $(document).ready(function() {
 
 		for(x = 0; x < jsonPass.patchLookbook.length; x++) {
 			buildPatch[0].patchLookbook.push( jsonPass.patchLookbook[x] );
-			$('#lookbookList').append('<li>' + buildPatch[0].patchLookbook[x] + '</li>');	
+			$('#lookbookList').append('<li class="editPrev" contenteditable=true>' + buildPatch[0].patchLookbook[x] + '</li>');	
 		};
 		for(x = 0; x < jsonPass.patchGraphicHeader.length; x++) {
 			buildPatch[0].patchGraphicHeader.push( jsonPass.patchGraphicHeader[x] );
-			$('#graphicheaderList').append('<li>' + buildPatch[0].patchGraphicHeader[x] + '</li>');	
+			$('#graphicheaderList').append('<li class="editPrev" contenteditable=true>' + buildPatch[0].patchGraphicHeader[x] + '</li>');	
 		};
 		for(x = 0; x < jsonPass.patchSiloBanner.length; x++) {
 			buildPatch[0].patchSiloBanner.push( jsonPass.patchSiloBanner[x] );
-			$('#siloBannerList').append('<li>' + buildPatch[0].patchSiloBanner[x] + '</li>');	
+			$('#siloBannerList').append('<li class="editPrev" contenteditable=true>' + buildPatch[0].patchSiloBanner[x] + '</li>');	
 		};
 		for(x = 0; x < jsonPass.patchPromoTile.length; x++) {
 			buildPatch[0].patchPromoTile.push( jsonPass.patchPromoTile[x] );			
-			$('#promoTileList').append('<li>' + buildPatch[0].patchPromoTile[x] + '</li>');	
+			$('#promoTileList').append('<li class="editPrev" contenteditable=true>' + buildPatch[0].patchPromoTile[x] + '</li>');	
 		};						
 	};
 
@@ -320,22 +346,22 @@ $(document).ready(function() {
 		switch(idType) {
 			case 'Lookbook':
 				buildPatch[0].patchLookbook.push( $('#editLookbookID').val() );
-				$('#lookbookList').append('<li>' + $('#editLookbookID').val() + '</li>');
+				$('#lookbookList').append('<li class="editPrev" contenteditable=true>' + $('#editLookbookID').val() + '</li>');
 				$('#editLookbookID').val('');
 				break;
 			case 'GraphicHeader':
 				buildPatch[0].patchGraphicHeader.push( $('#editGraphicHeaderID').val() );
-				$('#graphicheaderList').append('<li>' + $('#editGraphicHeaderID').val() + '</li>');
+				$('#graphicheaderList').append('<li class="editPrev" contenteditable=true>' + $('#editGraphicHeaderID').val() + '</li>');
 				$('#editGraphicHeaderID').val('');
 				break;	
 			case 'SiloBanner':
 				buildPatch[0].patchSiloBanner.push( $('#editSiloID').val() );
-				$('#siloBannerList').append('<li>' + $('#editSiloID').val() + '</li>');
+				$('#siloBannerList').append('<li class="editPrev" contenteditable=true>' + $('#editSiloID').val() + '</li>');
 				$('#editSiloID').val('');
 				break;	
 			case 'PromoTile':
 				buildPatch[0].patchPromoTile.push( $('#editPromoTile').val() + '.html');
-				$('#promoTileList').append('<li>' + $('#editPromoTile').val() + '.html</li>');
+				$('#promoTileList').append('<li class="editPrev" contenteditable=true>' + $('#editPromoTile').val() + '.html</li>');
 				$('#editPromoTile').val('');
 				break;												
 			default: ''
@@ -351,14 +377,15 @@ $(document).ready(function() {
 			if (buildPatch[0].patchLiveTime === '17:00') { 
 				patchTime = '5pm'; 
 			}
+		var icid = buildPatch[0].patchName.split(' ').join('').replace('Lookbook','').replace('Pre-Fall','').replace('Resort','') + '_' + patchDate.split('.').join('').replace('2017','17');
 		var creativeCopy = '<span style="font-weight:bold;">Creative Lookbook Turnover [' + buildPatch[0].patchName + '] Approvals + ProductIDs Due ' + dueDate + '</strong></span><br /><br />' +
-			'Please review the following ' + buildPatch[0].patchName + ' and provide Product IDs in order of their appearance in the design file by <span style="color:red; font-weight:bold;">' + dueDate + '</span><br /><br />' +
+			'Please review the following ' + buildPatch[0].patchName + ' and <span style="font-weight:bold; color: red;">provide Product IDs and Depictions</span> in order of their appearance in the design file by <span style="color:red; font-weight:bold;">' + dueDate + '</span><br /><br />' +
 			'<span style="font-weight:bold;">Creative Lookbook Turnover</span><br />' +
 			buildPatch[0].patchName + '<br /><br />' +
 			'<span style="font-weight:bold;"> Desktop Comp:</span><br />' + 
 			buildPatch[0].patchPSD + '</span>';
 		
-		var approvalsCopy = '<span style="font-weight:bold;">The ' + patchDate + ' [ ' + buildPatch[0].patchName + ' ] NM Merchant & Dept Manager approval by 5pm ' + approvalDate +'<br/><br/>' +
+		var approvalsCopy = '<span style="font-weight:bold;">The ' + patchDate + ' [ ' + buildPatch[0].patchName + ' ] NM Merchant & Dept Manager approval by <span style="font-weight:bold; color: red;">5pm ' + approvalDate +'</span><br/><br/>' +
 			'<span style="font-weight: bold;"><span style="font-weight:bold>The <span style="color: red;"> ' + patchDate + ' ' + buildPatch[0].patchName + '</span> has been posted online at:</span><br />' +
 			'http://www.neimanmarcus.com/i/category/' + buildPatch[0].patchLookbook[0] + '/c.cat?cacheCheckSeconds=1</span><br/><br/>' +
 			'Please proof it and <span style="color:red;">respond</span> with changes or your approval by <span style="color: red; font-weight: bold;">5pm ' + approvalDate + ' </span><br/><br/>' +
@@ -372,13 +399,42 @@ $(document).ready(function() {
 			'<span style="font-weight:bold;">Silo Banners:</span><br/>' +
 			listLoop(2) + '<br/><br/>' +
 			'<span style="font-weight:bold;">Promotile:</span><br/>' +	
-			'http://wn.ref1.nmg/category/promotiles/' + buildPatch[0].promoTile + '<br/>';
+			'http://wn.ref1.nmg/category/promotiles/' + buildPatch[0].patchPromoTile + '<br/>';
 
 		var scheduleCopy = '<span style="font-weight:bold;">Please schedule the [ ' + buildPatch[0].patchName + ' ] for ' + patchDate + ', ' + patchTime + '</span><br/><br/>' +
 		    'Please schedule the following folder on <span style="color:red; font-weight:bold;"> ' + patchDate + ', ' + patchTime + '</span>:<br/><br/>' +
 		    '<span style="font-weight:bold;">' + buildPatch[0].patchName + '</span><br/>' +
 		    '<span style="color:grey; font-weight:bold;"> ' + buildPatch[0].patchFolder + '</span><br/><br/>' +
 		    'Thank you!';
+
+		var icidCopy = '<table style="width:100%;">' +
+					    	'<tr style="font-weight:bold;">' +
+					    		'<td style="width: 15%;">' + patchDate + '</td>' +
+					    		'<td style="width: 40%;">' + buildPatch[0].patchName + '</td>' +
+					    		'<td style="width: 30%;">ICID</td>' +
+					    		'<td style="width: 15%;">Category</td>' +
+					    	'</tr>' +
+					    	'<tr>' +
+					    		'<td></td>' +
+					    		'<td>Lookbook </td>' +
+					    		'<td>LkBk_' + icid + '</td>' +
+					    		'<td>' + buildPatch[0].patchLookbook[0] + '</td>' +
+					    	'</tr>' +
+					    		'<td></td>' +
+					    		'<td>Graphic Headers </td>' +
+					    		icidLoop(1, icid) + 
+					    	'</tr>' +
+					    	'</tr>' +
+					    		'<td></td>' +
+					    		'<td>Silo Banners </td>' +
+					    		icidLoop(2, icid) +
+					    	'</tr>' +
+					    	'<tr>' +
+					    		'<td></td>' +
+					    		'<td>Promotile</td>' +
+					    		'<td>pt_' + icid + '</td>' +
+					    	'</tr>' +						    						    	
+					    '</table>';
 
 		function listLoop(type) {
 			var listOutput = [];
@@ -389,14 +445,40 @@ $(document).ready(function() {
 				asset = buildPatch[0].patchSiloBanner;
 			}
 			asset.forEach(function(assetReturn) {
-				listOutput.push('http://wn.ref1.nmg/i/category/' + assetReturn + '/c.cat?cacheCheckSeconds=1<br/>');
+				if(assetReturn != '') {
+					listOutput.push('http://wn.ref1.nmg/i/category/' + assetReturn + '/c.cat?cacheCheckSeconds=1<br/>');
+				}
 			});
 			return listOutput.join('');
+		};
+
+		function icidLoop(type, code) {
+			var code = icid;
+			var icidOutput = [];
+			var counter = 0;
+			if (type === 1) {
+				prefix = 'gh';
+				typeArray = buildPatch[0].patchGraphicHeader;
+			}
+			if (type === 2) {
+				prefix = 'sb';
+				typeArray = buildPatch[0].patchSiloBanner;
+			}
+			typeArray.forEach(function(typeReturn) {
+				if(counter === 0) {
+					icidOutput.push('<td>' + prefix + '_' + code + '</td><td>' + typeReturn + '</td>');
+				} else {
+					icidOutput.push('</tr><td></td><td></td><td>' + prefix + '_' + code + '_' + counter + '</td><td>' + typeReturn + '</td>');
+				}
+				counter++;
+			});
+			return icidOutput.join('');
 		};
 
 		$('#creativeEmail').html(creativeCopy);
 		$('#approvalsEmail').html(approvalsCopy);
 		$('#scheduleEmail').html(scheduleCopy);
+		$('#icidOutput').html(icidCopy);
 	};
 
 // Copy to Clipboard
@@ -429,13 +511,15 @@ $(document).ready(function() {
 		$('#generateScheduleEmail').css('display','none');		
 		$('#generateApprovalsEmail').css('display','none');
 		$('#generateCreativeEmail').css('display','none');
+		$('#icidGenerator').css('display','none');
 	});
 	$('#creativeEmailTab').click(function() {
 		$('#generateCreativeEmail').css('display','block');
 
 		$('#patchDetails').css('display','none');
 		$('#generateApprovalsEmail').css('display','none');		
-		$('#generateScheduleEmail').css('display','none');		
+		$('#generateScheduleEmail').css('display','none');
+		$('#icidGenerator').css('display','none');				
 		generateEmail();
 	});
 	$('#approvalEmailTab').click(function() {
@@ -444,6 +528,7 @@ $(document).ready(function() {
 		$('#generateCreativeEmail').css('display','none');
 		$('#patchDetails').css('display','none');
 		$('#generateScheduleEmail').css('display','none');
+		$('#icidGenerator').css('display','none');		
 		generateEmail();
 	});
 	$('#scheduleEmailTab').click(function() {
@@ -452,8 +537,20 @@ $(document).ready(function() {
 		$('#generateApprovalsEmail').css('display','none');
 		$('#generateCreativeEmail').css('display','none');
 		$('#patchDetails').css('display','none');
+		$('#icidGenerator').css('display','none');		
 		generateEmail();
 	});
+	$('#icidTab').click(function() {
+		$('#icidGenerator').css('display','block');
+
+		$('#generateApprovalsEmail').css('display','none');
+		$('#generateCreativeEmail').css('display','none');
+		$('#patchDetails').css('display','none');
+		$('#generateScheduleEmail').css('display','none');		
+		generateEmail();
+	});	
+
+	$('#icidGenerator').css('display','none');
 
 	$('#refreshEmail').click(function() {
 		generateEmail();	
@@ -464,6 +561,9 @@ $(document).ready(function() {
 	$('#refreshScheduleEmail').click(function() {
 		generateEmail();
 	});	
+	$('#refreshICID').click(function() {
+		generateEmail();
+	});
 
 	$('#copyCreativeEmail').click(function() {
 		selectText('creativeEmail');
@@ -475,6 +575,10 @@ $(document).ready(function() {
 
 	$('#copyScheduleEmail').click(function() {
 		selectText('scheduleEmail');
+	});
+
+	$('#copyICID').click(function() {
+		selectText('icidOutput');
 	});
 
 	$('.modal-toggle').click(function() {
@@ -490,28 +594,97 @@ $(document).ready(function() {
 		$('#loadFileModal').css('display','none','z-index','-1');
 	});
 
-		var jqxhr = $.getJSON( "http://nmo_creative/intranet/NMO/2017/05_2017/05_19_17_LkBk_Marc_Jacobs_PreFall_Live_05_22/05_21_17_5pm_LkBk_MarcJacobsPre-Fall.json", function() {
-		  console.log( "success" );
-		})
-		  .done(function() {
-		    console.log( "second success" );
-		  })
-		  .fail(function() {
-		    console.log( "error" );
-		  })
-		  .always(function() {
-		    console.log( "complete" );
-		  });
-		 
-		// Perform other work here ...
-		 
-		// Set another completion function for the request above
-		jqxhr.complete(function() {
-		  console.log( "second complete" );
-		});	
+
+	$(document).on('click','.editPrev',function(){
+		var currentVal = $(this).text();
+
+		$(this).addClass('editing');
+		$(this).keypress(function(e) {
+		    if(e.which == 13) {
+		    	e.preventDefault();
+				for(x = 0; x < buildPatch[0].patchGraphicHeader.length; x++) {
+					if(currentVal.indexOf(buildPatch[0].patchGraphicHeader[x]) > -1) {
+						buildPatch[0].patchGraphicHeader[x] = $(this).text();
+					}
+				}
+				for(x = 0; x < buildPatch[0].patchLookbook.length; x++) {
+		    	e.preventDefault();					
+					if(currentVal.indexOf(buildPatch[0].patchLookbook[x]) > -1) {
+						buildPatch[0].patchLookbook[x] = $(this).text();
+					}
+				}
+				for(x = 0; x < buildPatch[0].patchSiloBanner.length; x++) {
+		    	e.preventDefault();
+					if(currentVal.indexOf(buildPatch[0].patchSiloBanner[x]) > -1) {
+						buildPatch[0].patchSiloBanner[x] = $(this).text();
+					}
+				}
+				for(x = 0; x < buildPatch[0].patchPromoTile.length; x++) {
+		    	e.preventDefault();
+					if(currentVal.indexOf(buildPatch[0].patchPromoTile[x]) > -1) {
+						buildPatch[0].patchPromoTile[x] = $(this).text();
+					}
+				}
+
+				if($(this).hasClass('editing')) {
+					$(this).removeClass('editing');
+				}									
+		    }
+		});
+		$(this).blur(function() {
+			for(x = 0; x < buildPatch[0].patchGraphicHeader.length; x++) {
+				if(currentVal.indexOf(buildPatch[0].patchGraphicHeader[x]) > -1) {
+					buildPatch[0].patchGraphicHeader[x] = $(this).text();
+					}
+			}
+			for(x = 0; x < buildPatch[0].patchLookbook.length; x++) {
+				if(currentVal.indexOf(buildPatch[0].patchLookbook[x]) > -1) {
+					buildPatch[0].patchLookbook[x] = $(this).text();
+				}
+			}
+			for(x = 0; x < buildPatch[0].patchSiloBanner.length; x++) {
+				if(currentVal.indexOf(buildPatch[0].patchSiloBanner[x]) > -1) {
+					buildPatch[0].patchSiloBanner[x] = $(this).text();
+				}
+			}
+			for(x = 0; x < buildPatch[0].patchPromoTile.length; x++) {
+				if(currentVal.indexOf(buildPatch[0].patchPromoTile[x]) > -1) {
+					buildPatch[0].patchPromoTile[x] = $(this).text();
+				}
+			}
+			
+			if($(this).hasClass('editing')) {
+				$(this).removeClass('editing');
+			}			
+		});
+
+		function editItem() {
+			for(x = 0; x < buildPatch[0].patchGraphicHeader.length; x++) {
+				if(currentVal.indexOf(buildPatch[0].patchGraphicHeader[x]) > -1) {
+					buildPatch[0].patchGraphicHeader[x] = $(this).text();
+					}
+			}
+			for(x = 0; x < buildPatch[0].patchLookbook.length; x++) {
+				if(currentVal.indexOf(buildPatch[0].patchLookbook[x]) > -1) {
+					buildPatch[0].patchLookbook[x] = $(this).text();
+				}
+			}
+			for(x = 0; x < buildPatch[0].patchSiloBanner.length; x++) {
+				if(currentVal.indexOf(buildPatch[0].patchSiloBanner[x]) > -1) {
+					buildPatch[0].patchSiloBanner[x] = $(this).text();
+				}
+			}
+			for(x = 0; x < buildPatch[0].patchPromoTile.length; x++) {
+				if(currentVal.indexOf(buildPatch[0].patchPromoTile[x]) > -1) {
+					buildPatch[0].patchPromoTile[x] = $(this).text();
+				}
+			}
+		};
+
+	});
+
+
 
 }); // EoF Document Ready Function
-
-
 
 
