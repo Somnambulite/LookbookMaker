@@ -13,7 +13,10 @@ $(document).ready(function() {
 		patchLookbook: [],
 		patchGraphicHeader: [],
 		patchSiloBanner: [],
-		patchPromoTile: []
+		patchPromoTile: [],
+		patchGHDrive: '',
+		patchSBDrive: '',
+		patchICID: '',
 	}];
 	var merchant;
 	var liveDate;
@@ -39,13 +42,14 @@ $(document).ready(function() {
 		}
 		folderName();
 	});
+
 // remove 'Lookbook' title from patchName as required
 	$('#editPatchName').focus(function() {
 		if($(this).val() != '') {
 			nameValue = $(this).val().replace('Lookbook','');
 			$(this).val(nameValue);
 		}
-	})
+	});
 
 // Automatic Merchant Fill
 	function predictiveMerchant(patchKey) {
@@ -58,55 +62,52 @@ $(document).ready(function() {
 		var beauty = ['fragrance','beauty','makeup'];
 		var special = ['fisher','special','petite','plus'];
 		var jewelry = ['yurman','pj','bj','precious','bejeweled','jewel','ippolita'];
+		var filters = [shoes, accessories, home, contemporary, beauty, special, jewelry];	
+
 		var notfound = true;
 
-		for(x = 0; x < shoes.length; x++) {
-		  if (patchKey.indexOf(shoes[x]) > -1) {
-		      	merchant = "Ashley Spaulding";
-		      	notfound = false;
-		    }
+		for(var z=0;z< filters.length; z++) {
+			for(var e=0; e < filters[z].length; e++) {
+		      	if(patchKey.includes(filters[z][e])) {
+		      		switch(z) {
+		          		case 0:
+		            	// shoes
+		            		merchant = 'Ashley Spaulding';
+		              		break;
+		          		case 1:
+		            	//accessories
+		            		merchant = 'Michelle Mrowka';
+		              		break;
+		            	case 2:
+		            	//home
+		            		merchant = 'Judy Liu';
+		            		break;
+		            	case 3: 
+		            	//contemporary
+		            		merchant = 'Natasha Burns';
+		            		break;
+		            	case 4:
+		            	//beauty 
+		            		merchant = 'Nicolas Ochoa';
+		            		break;
+		            	case 5:
+		            	//special
+		            		merchant = 'Gentry Rush';
+		            		break;
+		            	case 6:
+		            	//jewelry
+		            		merchant = 'Lauren Perella';
+		            		break;
+		            	default:
+		            		merchant = 'Courtney Carruth / Jennifer Berke';
+		          	}
+		            notfound = false;
+				}
+		  	}
 		}
-		for(x = 0; x < accessories.length; x++) {
-		  if (patchKey.indexOf(accessories[x]) > -1) {
-		      merchant = "Michelle Mrowka";
-		      notfound = false;
-		    } 
+		if(notfound) {
+			merchant = 'Courtney Carruth / Jennifer Berke';			
 		}
-		for(x = 0; x < home.length; x++) {
-		  if (patchKey.indexOf(home[x]) > -1) {
-		      merchant = "Judy Liu";
-		      notfound = false;
-		    } 
-		}	
-		for(x = 0; x < contemporary.length; x++) {
-		  if (patchKey.indexOf(contemporary[x]) > -1) {
-		      merchant = "Natasha Burns";
-		      notfound = false;
-		    } 
-		}		
-		for(x = 0; x < beauty.length; x++) {
-		  if (patchKey.indexOf(beauty[x]) > -1) {
-		      merchant = "Nicolas Ochoa";
-		      notfound = false;
-		    } 
-		}
-		for(x = 0; x < special.length; x++) {
-		  if (patchKey.indexOf(special[x]) > -1) {
-		      merchant = "Gentry Rush";
-		      notfound = false;
-		    } 
-		}
-		for(x = 0; x < jewelry.length; x++) {
-		  if (patchKey.indexOf(jewelry[x]) > -1) {
-		      merchant = "Lauren Perella";
-		      notfound = false;
-		    } 
-		}		
-
-		if(notfound != false) {
-			merchant = 'Courtney Carruth / Jennifer Berke';
-		}	
-		merchant = merchant;
 
 		if(merchant != '') {
 			$('#editMerchant').val(merchant);
@@ -149,7 +150,7 @@ $(document).ready(function() {
 			} else {
 				$(this).val(buildPatch[0].patchLiveTime);
 			}
-
+			console.log(buildPatch[0].patchLiveTime);
 		}
 
 		if(idDue.getDay() === 6) {
@@ -185,38 +186,38 @@ $(document).ready(function() {
 
 	function folderName() {
 	// Generate Folder Name based on field inputs (date + patchName)
-		if($('#editPatchName').hasClass('validated')) {
-			var parseDate = buildPatch[0].patchLiveDate;
+		// if($('#editPatchName').hasClass('validated')) {
 			var spcStrip = buildPatch[0].patchName.split(' ').join('').split('Lookbook').join('').split("'").join('');
 			var month = buildPatch[0].patchLiveDate.substr(5,2);
 			var day = buildPatch[0].patchLiveDate.substr(8,2);
 			var year = buildPatch[0].patchLiveDate.substr(2,2);
-			function parseTime(time) {
-				var time = buildPatch[0].patchLiveTime;
-				switch(time) {
-					case '17:00':
-						return '5pm';
-						break;
-					case '15:00':
-						return '3pm';
-						break;
-					case '09:00':
-						return '9am';
-						break;
-					default:
-						return '';
-				};
-			}
-	}
-			// $('#editFolder').val(month + '_' + day + '_' + year + "_" + buildPatch[0].patchLiveTime + "_" + "LkBk_" + spcStrip);
-			$('#editFolder').val(month + "_" + day + "_" + year + "_" + parseTime(buildPatch[0].patchLiveTime) +  "_LkBk_" + spcStrip);
+			var time = buildPatch[0].patchLiveTime.replace('17:00','5pm').replace('22:00','10pm').replace('15:00','3pm').replace('09:00','9am');
+			console.log(time);
+
+			$('#editFolder').val(month + "_" + day + "_" + year + "_" + time +  "_LkBk_" + spcStrip);
 			buildPatch[0].patchFolder = $('#editFolder').val();
+
+		// };
 	};
 
 	$('#editPSD').blur(function() {
 		var creativeURI = $('#editPSD').val().replace("afp://nm93fs3/E_Creative_Intranet_Site","http://nmo_creative");
 		$('#editPSD').val(creativeURI);
 		buildPatch[0].patchPSD = creativeURI;
+	});
+
+	$('#editGHDrive').blur(function() {
+		var drive = $('#editGHDrive').val().replace('http://www.neimanmarcus.com','');
+		$('#editGHDrive').val(drive);
+		buildPatch[0].patchGHDrive = drive;
+		console.log(buildPatch[0].patchGHDrive);		
+	});
+
+	$('#editSBDrive').blur(function() {
+		var drive = $('#editSBDrive').val().replace('http://www.neimanmarcus.com','');
+		$('#editSBDrive').val(drive);
+		buildPatch[0].patchSBDrive = drive;
+		console.log(buildPatch[0].patchSBDrive);
 	});
 
 	function savePatch(text, filename){
@@ -281,6 +282,14 @@ $(document).ready(function() {
 
 		buildPatch[0].patchPSD = jsonPass.patchPSD;
 		$('#editPSD').empty().val(buildPatch[0].patchPSD);
+
+		buildPatch[0].patchGHDrive = jsonPass.patchGHDrive;
+		$('#editGHDrive').empty().val(buildPatch[0].patchGHDrive);		
+
+		buildPatch[0].patchSBDrive = jsonPass.patchSBDrive;
+		$('#editSBDrive').empty().val(buildPatch[0].patchSBDrive);		
+
+		buildPatch[0].patchICID = jsonPass.patchICID;
 
 		$('#lookbookList').empty();
 		$('#graphicheaderList').empty();
@@ -373,11 +382,24 @@ $(document).ready(function() {
 		var dueDate = buildPatch[0].patchProdIDDate.substr(5,2) + '.' + buildPatch[0].patchProdIDDate.substr(8,2) + '.' + buildPatch[0].patchProdIDDate.substr(0,4);
 		var today = new Date();
 		var approvalDate = (today.getMonth() + 1) + '.' + today.getDate() + '.' + today.getYear();
+		var month = buildPatch[0].patchLiveDate.substr(5,2);
+		var day = buildPatch[0].patchLiveDate.substr(8,2);
+		var year = buildPatch[0].patchLiveDate.substr(2,2);
 		var patchTime = buildPatch[0].patchLiveTime;
 			if (buildPatch[0].patchLiveTime === '17:00') { 
 				patchTime = '5pm'; 
 			}
-		var icid = buildPatch[0].patchName.split(' ').join('').replace('Lookbook','').replace('Pre-Fall','').replace('Resort','') + '_' + patchDate.split('.').join('').replace('2017','17');
+		var icid;
+
+		if(buildPatch[0].patchICID === '') {
+			icid = buildPatch[0].patchFolder.substr(10) + '_' + month + day + year;
+		} else {
+			icid = buildPatch[0].patchICID;
+		}
+
+		console.log(icid);
+
+
 		var creativeCopy = '<span style="font-weight:bold;">Creative Lookbook Turnover [' + buildPatch[0].patchName + '] Approvals + ProductIDs Due ' + dueDate + '</strong></span><br /><br />' +
 			'Please review the following ' + buildPatch[0].patchName + ' and <span style="font-weight:bold; color: red;">provide Product IDs and Depictions</span> in order of their appearance in the design file by <span style="color:red; font-weight:bold;">' + dueDate + '</span><br /><br />' +
 			'<span style="font-weight:bold;">Creative Lookbook Turnover</span><br />' +
@@ -417,12 +439,12 @@ $(document).ready(function() {
 					    	'<tr>' +
 					    		'<td></td>' +
 					    		'<td>Lookbook </td>' +
-					    		'<td>LkBk_' + icid + '</td>' +
+					    		'<td>' + icid + '</td>' +
 					    		'<td>' + buildPatch[0].patchLookbook[0] + '</td>' +
 					    	'</tr>' +
 					    		'<td></td>' +
 					    		'<td>Graphic Headers </td>' +
-					    		icidLoop(1, icid) + 
+					    		icidLoop(1, icid) +
 					    	'</tr>' +
 					    	'</tr>' +
 					    		'<td></td>' +
@@ -435,6 +457,36 @@ $(document).ready(function() {
 					    		'<td>pt_' + icid + '</td>' +
 					    	'</tr>' +						    						    	
 					    '</table>';
+
+			var ghCode = '<pre><p>&lt;figure class="figure-full-width"&gt;</p>' +
+  							 '<p>&lt;a href="' + buildPatch[0].patchGHDrive + '?icid=gh_' + icid + '"&gt;</p>' +
+	    						'<p>&lt;picture&gt;</p>' +
+	     							'<p>&lt;!--[if IE 9]&gt;&lt;video&gt;&lt;![endif]--&gt;</p>' +
+	     							'<p>&lt;source media="(min-width: 768px)" srcset="/category/' + buildPatch[0].patchGraphicHeader[0] + '/r_head_long_' + month + day + year +'.jpg" /&gt;</p>' +
+	          						'<p>&lt;source media="(min-width: 1px)"   srcset="/category/' + buildPatch[0].patchGraphicHeader[0] + '/m_head_long_' + month + day + year +'.jpg" /&gt;</p>' +
+	     							'<p>&lt;!--[if IE 9]&gt;&lt;/video&gt;&lt;![endif]--&gt;</p>' +
+	     							'<p>&lt;img src="/category/' + buildPatch[0].patchGraphicHeader[0] + '/r_head_long_' + month + day + year +'.jpg" srcset="/category/' + buildPatch[0].patchGraphicHeader[0] + '/r_head_long_' + month + day + year +'.jpg" alt="' + buildPatch[0].patchName +'" /&gt;</p>' +
+	    						'<p>&lt;/picture&gt;</p>' +
+  							'<p>&lt;/a&gt;</p>' +
+							'<p>&lt;/figure&gt;</p></pre>';
+
+			var sbCode = '<pre><p>&lt;figure class="figure-full-width"&gt;</p>' +
+  							 '<p>&lt;a href="' + buildPatch[0].patchSBDrive + '?icid=sb_' + icid + '"&gt;</p>' +
+	    						'<p>&lt;picture&gt;</p>' +
+	     							'<p>&lt;!--[if IE 9]&gt;&lt;video&gt;&lt;![endif]--&gt;</p>' +
+	     							'<p>&lt;source media="(min-width: 768px)" srcset="/category/' + buildPatch[0].patchSiloBanner[0] + '/r_head_long_' + month + day + year +'.jpg" /&gt;</p>' +
+	          						'<p>&lt;source media="(min-width: 1px)"   srcset="/category/' + buildPatch[0].patchSiloBanner[0] + '/m_head_long_' + month + day + year +'.jpg" /&gt;</p>' +
+	     							'<p>&lt;!--[if IE 9]&gt;&lt;/video&gt;&lt;![endif]--&gt;</p>' +
+	     							'<p>&lt;img src="/category/' + buildPatch[0].patchSiloBanner[0] + '/r_head_long_' + month + day + year +'.jpg" srcset="/category/' + buildPatch[0].patchSiloBanner[0] + '/r_head_long_' + month + day + year +'.jpg" alt="' + buildPatch[0].patchName +'" /&gt;</p>' +
+	    						'<p>&lt;/picture&gt;</p>' +
+  							'<p>&lt;/a&gt;</p>' +
+							'<p>&lt;/figure&gt;</p></pre>';
+
+			var ptCode = '<pre><p>&lt;figure class="figure-full-width"&gt;</p>' +
+    						'<p>&lt;a href="' + buildPatch[0].patchGHDrive + '?icid=pt_' + icid + '"&gt;</p>' +
+        					'<p>&lt;img src="/category/promotiles/event/' + icid.substr(0, icid.length - 7) + '_' + month + year + '/Promotile_' + month + day + year + '.jpg" alt="' + buildPatch[0].patchName + '" style="border: 1px solid #ccc;" /&gt;</p>'+
+    						'<p>&lt;/a&gt;</p>' +
+							'<p>&lt;/figure&gt;</p></pre>';							
 
 		function listLoop(type) {
 			var listOutput = [];
@@ -479,6 +531,9 @@ $(document).ready(function() {
 		$('#approvalsEmail').html(approvalsCopy);
 		$('#scheduleEmail').html(scheduleCopy);
 		$('#icidOutput').html(icidCopy);
+		$('#ghOutput').html(ghCode);
+		$('#sbOutput').html(sbCode);
+		$('#ptOutput').html(ptCode);
 	};
 
 // Copy to Clipboard
@@ -512,6 +567,7 @@ $(document).ready(function() {
 		$('#generateApprovalsEmail').css('display','none');
 		$('#generateCreativeEmail').css('display','none');
 		$('#icidGenerator').css('display','none');
+		$('#ssGenerator').css('display','none');		
 	});
 	$('#creativeEmailTab').click(function() {
 		$('#generateCreativeEmail').css('display','block');
@@ -519,7 +575,8 @@ $(document).ready(function() {
 		$('#patchDetails').css('display','none');
 		$('#generateApprovalsEmail').css('display','none');		
 		$('#generateScheduleEmail').css('display','none');
-		$('#icidGenerator').css('display','none');				
+		$('#icidGenerator').css('display','none');	
+		$('#ssGenerator').css('display','none');					
 		generateEmail();
 	});
 	$('#approvalEmailTab').click(function() {
@@ -528,7 +585,8 @@ $(document).ready(function() {
 		$('#generateCreativeEmail').css('display','none');
 		$('#patchDetails').css('display','none');
 		$('#generateScheduleEmail').css('display','none');
-		$('#icidGenerator').css('display','none');		
+		$('#icidGenerator').css('display','none');
+		$('#ssGenerator').css('display','none');				
 		generateEmail();
 	});
 	$('#scheduleEmailTab').click(function() {
@@ -537,7 +595,8 @@ $(document).ready(function() {
 		$('#generateApprovalsEmail').css('display','none');
 		$('#generateCreativeEmail').css('display','none');
 		$('#patchDetails').css('display','none');
-		$('#icidGenerator').css('display','none');		
+		$('#icidGenerator').css('display','none');
+		$('#ssGenerator').css('display','none');				
 		generateEmail();
 	});
 	$('#icidTab').click(function() {
@@ -546,9 +605,20 @@ $(document).ready(function() {
 		$('#generateApprovalsEmail').css('display','none');
 		$('#generateCreativeEmail').css('display','none');
 		$('#patchDetails').css('display','none');
-		$('#generateScheduleEmail').css('display','none');		
+		$('#generateScheduleEmail').css('display','none');
+		$('#ssGenerator').css('display','none');				
 		generateEmail();
-	});	
+	});
+	$('#ssTab').click(function() {
+		$('#ssGenerator').css('display','block');
+
+		$('#generateApprovalsEmail').css('display','none');
+		$('#generateCreativeEmail').css('display','none');
+		$('#patchDetails').css('display','none');
+		$('#generateScheduleEmail').css('display','none');	
+		$('#icidGenerator').css('display','none');			
+		generateEmail();
+	});		
 
 	$('#icidGenerator').css('display','none');
 
@@ -580,6 +650,16 @@ $(document).ready(function() {
 	$('#copyICID').click(function() {
 		selectText('icidOutput');
 	});
+	$('#copyGH').click(function() {
+		selectText('ghOutput');
+	});
+	$('#copySB').click(function() {
+		selectText('sbOutput');
+	});	
+	$('#copyPT').click(function() {
+		selectText('ptOutput');
+	});	
+
 
 	$('.modal-toggle').click(function() {
 		$('#loadFileModal').css('display','block');

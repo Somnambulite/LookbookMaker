@@ -11,15 +11,15 @@
         text-transform: uppercase;
         background-color: #0D47A1;
         color: white;
-        font-size: 14px;
+        font-size: 10px;
         letter-spacing: 1px;
     }
     .maker header a { color: white; }
     .maker header nav li { position: relative; }
     .maker header i { 
         position: relative;
-        top: 5px;
-        font-size: 30px; 
+        top: 3px;
+        font-size: 19px; 
     }
     .maker .wrapper {
         max-width: 1200px;
@@ -934,7 +934,9 @@
     .maker .modal .btn { color: #fff !important; }
     .maker #generateCreativeEmail,
     .maker #generateApprovalsEmail,
-    .maker #generateScheduleEmail { display: none; }
+    .maker #generateScheduleEmail,
+    .maker #icidGenerator,
+    .maker #ssGenerator { display: none; }
     .maker #creativeEmail,
     .maker #approvalsEmail,
     .maker #scheduleEmail { font-family: Helvetica, Arial, sans-serif; }

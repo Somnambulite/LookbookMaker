@@ -74,6 +74,7 @@
                 <li><a href="#" id="approvalEmailTab"><i class="fa fa-handshake-o" aria-hidden="true"></i>Production Approvals E-Mail</a></li>
                 <li><a href="#" id="scheduleEmailTab"><i class="fa fa-rocket" aria-hidden="true"></i>Schedule Lookbook</a></li>
                 <li><a href="#" id="icidTab"><i class="fa fa-barcode" aria-hidden="true"></i>ICID Generator</a></li>                
+                <li><a href="#" id="ssTab"><i class="fa fa-file-code-o" aria-hidden="true"></i>Site Support Generator</a></li>  
             </ul>
         </nav>
     </header>
@@ -260,56 +261,23 @@
                                 <ul id="promoTileList" class="idList">
                                 </ul>                                                               
                         </section>
-<!--                         <section class="col-xs-12 col-sm-4 text-center patchToggles">
-                            <article class="col-xs-12 col-sm-4">
-                                <a href="#" id="saveEdits">
-                                    <figure>
-                                        <i class="fa fa-cloud-download " aria-hidden="true"></i>
-                                    </figure>
-                                    <figcaption>
-                                        Save
-                                    </figcaption>
-                                </a>   
-                            </article>
-                            <article class="col-xs-12 col-sm-4 relative">
-                                <a href="#" id="loadEdits" class="modal-toggle">
-                                    <figure>
-                                        <i class="fa fa-cloud-upload " aria-hidden="true"></i>
-                                    </figure>
-                                    <figcaption>
-                                        Load
-                                    </figcaption>
-                                </a> 
-                                <div id="loadFileModal" class="row tooltip-modal modal">
-                                    <section class="card-panel-4">
-                                        <div class="card-content">
-                                            <div class="row">
-                                                <section class="controls">
-                                                    <i class="fa fa-window-close modal-close" aria-hidden="true"></i>
-                                                </section>
-                                            </div>
-                                            <figure class="form-group">
-                                                <input id="loadFile" type="file" class="form-control" required>
-                                                <label for="loadFile">Select a file to load:</label>
-                                            </figure>
-                                            <figure class="form-group">
-                                                <input id="fileSubmit" type="button" class="btn form-control" value="Load File">
-                                            </figure>                                              
-                                        </div>
-                                    </section>
-                                </div>                                  
-                            </article>  
-                            <article class="col-xs-12 col-sm-4">
-                                <a href="#" id="continueEdits">
-                                    <figure>
-                                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                    </figure>
-                                    <figcaption>
-                                        Generate E-mail
-                                    </figcaption>
-                                </a>   
-                            </article>                                                       
-                        </section> -->
+                        <section class="col-xs-12 col-sm-4">
+                            <p class="title margin-bottom-20">Patch Drives</p>
+                            <p>Input the drives for both Graphic Header / Promotile and Silo Banners</p>
+                            <hr>
+                            <figure class="form-group">
+                                <input id="editGHDrive" type="text" class="form-control" placeholder="Graphic header / Promotile Drive">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label for="editCreativeTime">Graphic Header / Promotile Drive:</label>
+                            </figure>  
+                            <figure class="form-group">
+                                <input id="editSBDrive" type="text" class="form-control" placeholder="Silo Banner Drive">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label for="editCreativeTime">Silo Banner Drive:</label>
+                            </figure>                                                                                        
+                        </section>                        
                     </div>                      
                 </div>
             </section>
@@ -461,8 +429,83 @@
         </div>
     </div>
 
+    <div id="ssGenerator" class="wrapper">
+        <div class="row">
+            <section class="card-panel-2">
+                <div class="card-content">
+                    <div class="row">
+                        <article class="col-xs-11">
+                            <p class="title">Site Support Generator</p>
+                            <p>Copy generated code to respective r_head_long.html files for graphic headers, silo banners and promotiles.</p>
+                            <hr>
+                        </article>
+                        <article class="col-xs-1 text-center">
+                            <a id="refreshSS" href="#" class="addButton"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                        </article>
+                    </div>
+                    <div class="row">
+                        <article class="col-xs-12">
+                            <p class="title">Graphic Header</p>
+                            <div id="ghOutput" contenteditable="true"></div>
+                        </article>
+                    </div>
+                    <div class="row">
+                        <article class="col-xs-10"></article>
+                        <article class="col-xs-2 text-center patchToggles"> 
+                            <a href="#" id="copyGH">
+                                <figure>                                              
+                                    <i class="fa fa-clipboard" aria-hidden="true"></i>
+                                </figure>
+                                <figcaption>
+                                    Copy to<br/> Clipboard
+                                </figcaption>
+                            </a>
+                        </article>
+                    </div>                    
+                    <div class="row">
+                        <article class="col-xs-12">
+                            <p class="title">Silo Banner</p>
+                            <div id="sbOutput" contenteditable="true"></div>
+                        </article>
+                    </div>
+                    <div class="row">
+                        <article class="col-xs-10"></article>
+                        <article class="col-xs-2 text-center patchToggles"> 
+                            <a href="#" id="copySB">
+                                <figure>                                              
+                                    <i class="fa fa-clipboard" aria-hidden="true"></i>
+                                </figure>
+                                <figcaption>
+                                    Copy to<br/> Clipboard
+                                </figcaption>
+                            </a>
+                        </article>
+                    </div>                    
+                    <div class="row">
+                        <article class="col-xs-12">
+                            <p class="title">Promotile</p>
+                            <div id="ptOutput" contenteditable="true"></div>
+                        </article>
+                    </div> 
+                    <div class="row">
+                        <article class="col-xs-10"></article>
+                        <article class="col-xs-2 text-center patchToggles"> 
+                            <a href="#" id="copyPT">
+                                <figure>                                              
+                                    <i class="fa fa-clipboard" aria-hidden="true"></i>
+                                </figure>
+                                <figcaption>
+                                    Copy to<br/> Clipboard
+                                </figcaption>
+                            </a>
+                        </article>
+                    </div>                                                           
+                </div>
+            </section>
+        </div>
+    </div>
 
-<p style="font-size:10px; margin: 40px auto 5px; text-align:center;">Version 1.0.0</p>
+<p style="font-size:10px; margin: 40px auto 5px; text-align:center;">Version 1.1.0</p>
     </body>
 </html>
 
