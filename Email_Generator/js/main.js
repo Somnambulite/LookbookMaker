@@ -17,9 +17,11 @@ $(document).ready(function() {
 		patchGHDrive: '',
 		patchSBDrive: '',
 		patchICID: '',
+		patchKey: '',
 	}];
 	var merchant;
 	var liveDate;
+	var condensedDate;
 
 // Validation color change 
 	$('.form-control').focusout(function() {
@@ -119,7 +121,6 @@ $(document).ready(function() {
 	$('#editMerchant').blur(function() {
 		merchant =  $('#editMerchant').val();
 		buildPatch[0].patchMerchant = merchant;
-		console.log( buildPatch[0].patchMerchant);
 	});
 
 
@@ -150,8 +151,7 @@ $(document).ready(function() {
 			} else {
 				$(this).val(buildPatch[0].patchLiveTime);
 			}
-			console.log(buildPatch[0].patchLiveTime);
-		}
+		};
 
 		if(idDue.getDay() === 6) {
 			idDue = new Date(hex.setDate(hex.getDate() - 1));
@@ -186,19 +186,39 @@ $(document).ready(function() {
 
 	function folderName() {
 	// Generate Folder Name based on field inputs (date + patchName)
-		// if($('#editPatchName').hasClass('validated')) {
-			var spcStrip = buildPatch[0].patchName.split(' ').join('').split('Lookbook').join('').split("'").join('');
-			var month = buildPatch[0].patchLiveDate.substr(5,2);
-			var day = buildPatch[0].patchLiveDate.substr(8,2);
-			var year = buildPatch[0].patchLiveDate.substr(2,2);
-			var time = buildPatch[0].patchLiveTime.replace('17:00','5pm').replace('22:00','10pm').replace('15:00','3pm').replace('09:00','9am');
-			console.log(time);
+		var spcStrip = buildPatch[0].patchName.split(' ').join('').split('Lookbook').join('').split("'").join('');
+		var month = buildPatch[0].patchLiveDate.substr(5,2);
+		var day = buildPatch[0].patchLiveDate.substr(8,2);
+		var year = buildPatch[0].patchLiveDate.substr(2,2);
+		var time = buildPatch[0].patchLiveTime.replace('17:00','5pm').replace('22:00','10pm').replace('15:00','3pm').replace('09:00','9am');
+		var timeFormatted = buildPatch[0].patchLiveDate.substr(5,2) + buildPatch[0].patchLiveDate.substr(8,2) + buildPatch[0].patchLiveDate.substr(2,2);
 
-			$('#editFolder').val(month + "_" + day + "_" + year + "_" + time +  "_LkBk_" + spcStrip);
-			buildPatch[0].patchFolder = $('#editFolder').val();
-
-		// };
+		if($('#editPatchName').val() != '') {
+			if($('#editLiveTime').val() != '') {
+			// Generate Folder Name
+				$('#editFolder').val(month + "_" + day + "_" + year + "_" + time +  "_LkBk_" + spcStrip);
+			// Generate Promotile		
+				if($('#editPromoTile').val() === '') {
+					if(buildPatch[0].patchPromoTile.length > -1) {
+						$('#editPromoTile').val('pt_LkBk_' + spcStrip + '_' + timeFormatted);	
+					}	
+				}
+			}
+		}
+		buildPatch[0].patchFolder = $('#editFolder').val();
 	};
+
+	function createICID() {
+		icidKey = $('#editFolder').val();
+		if(icidKey != '') {
+    		delimiter = '_',
+    		start = 4,
+    		tokens = icidKey.split(delimiter).slice(start),
+    		icid = tokens.join(delimiter);
+		}
+		buildPatch[0].patchICID = icid;
+		console.log(icid);
+	}
 
 	$('#editPSD').blur(function() {
 		var creativeURI = $('#editPSD').val().replace("afp://nm93fs3/E_Creative_Intranet_Site","http://nmo_creative");
@@ -209,15 +229,13 @@ $(document).ready(function() {
 	$('#editGHDrive').blur(function() {
 		var drive = $('#editGHDrive').val().replace('http://www.neimanmarcus.com','');
 		$('#editGHDrive').val(drive);
-		buildPatch[0].patchGHDrive = drive;
-		console.log(buildPatch[0].patchGHDrive);		
+		buildPatch[0].patchGHDrive = drive;		
 	});
 
 	$('#editSBDrive').blur(function() {
 		var drive = $('#editSBDrive').val().replace('http://www.neimanmarcus.com','');
 		$('#editSBDrive').val(drive);
 		buildPatch[0].patchSBDrive = drive;
-		console.log(buildPatch[0].patchSBDrive);
 	});
 
 	function savePatch(text, filename){
@@ -389,15 +407,15 @@ $(document).ready(function() {
 			if (buildPatch[0].patchLiveTime === '17:00') { 
 				patchTime = '5pm'; 
 			}
-		var icid;
+		
+		createICID();
+		folderName();
 
 		if(buildPatch[0].patchICID === '') {
 			icid = buildPatch[0].patchFolder.substr(10) + '_' + month + day + year;
 		} else {
 			icid = buildPatch[0].patchICID;
 		}
-
-		console.log(icid);
 
 
 		var creativeCopy = '<span style="font-weight:bold;">Creative Lookbook Turnover [' + buildPatch[0].patchName + '] Approvals + ProductIDs Due ' + dueDate + '</strong></span><br /><br />' +

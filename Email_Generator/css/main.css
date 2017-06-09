@@ -133,7 +133,8 @@
     .maker .card-panel-4, 
     .maker .card-panel-5 {
         transition: box-shadow .25s;
-        margin: 8px;
+        margin-top: 8px;
+        margin-bottom: 8px;
         border-radius: 2px;
         background-color: #fff;
     }
@@ -246,7 +247,12 @@
         .maker .col-sm-4 {
             width: 33.33333%;
         }
-
+        .maker .gutter.col-sm-4 {
+            width: 31%;
+            margin-left: 1%;
+            margin-right: 1%;
+           
+        }
         .maker .col-sm-5 {
             width: 41.66667%;
         }
